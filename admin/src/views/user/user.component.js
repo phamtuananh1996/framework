@@ -9,7 +9,7 @@ export default {
     }
   },
   mounted: function () {
-    this.$store.commit('getUser')
+    this.$store.commit('getUser', 1)
   },
   computed: {
     fields () {
@@ -17,6 +17,9 @@ export default {
     },
     users () {
       return this.$store.state.User.users
+    },
+    page () {
+      return this.$store.state.User.page
     }
   },
   data: () => {
@@ -24,11 +27,11 @@ export default {
     }
   },
   methods: {
-    destroy: function (user) {
-      this.$store.dispatch('destroyUser', user)
+    edit: function (user) {
+      this.$router.push('/user/edit/' + user.id)
     },
     clickCallback: function (pageNum) {
-      console.log(pageNum)
+      this.$store.commit('getUser', pageNum)
     }
   }
 }

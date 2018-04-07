@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Users;
 use Illuminate\Http\Request;
 use App\Http\Controllers\ApiController;
 use App\Models\User;
+use App\Http\Requests\UserRequests\CreateUserRequest;
 
 class UserController extends ApiController
 {
@@ -28,9 +29,17 @@ class UserController extends ApiController
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CreateUserRequest $request)
     {
-        //
+        $user=User::create([
+            'name'=>$request->name,
+            'email'=>$request->email,
+            'password'=>bcrypt($request->password),
+            'phone'=>$request->phone,
+            'address'=>$request->address,
+        ]);
+        $user->assignRole(config('role.MEMBER'));
+        return $this->response($user);
     }
 
     /**
@@ -39,9 +48,9 @@ class UserController extends ApiController
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(User $user)
     {
-        //
+        return $this->response($user);
     }
 
     /**
@@ -62,8 +71,9 @@ class UserController extends ApiController
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(User $user)
     {
-        //
+        $user->delete();
+        return $this->response('delete success');
     }
 }

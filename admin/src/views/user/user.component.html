@@ -9,19 +9,19 @@
         </thead>
         <tbody>
           <tr v-for='(user,index) in users'>
-            <td>{{index+1}}</td>
+            <td>{{user.id}}</td>
             <td>{{user.name}}</td>
             <td>{{user.email}}</td>
             <td>{{user.phone}}</td>
             <td>{{user.address}}</td>
             <td>
-              <button type="button" class="btn btn-danger btn-sm" v-on:click="destroy(user)">xóa</button>
+              <button type="button" class="btn btn-info btn-sm" v-on:click.stop="edit(user)">Edit</button>
             </td>
           </tr>
         </tbody>
       </table>
-      <paginate 
-          :page-count="20" :page-range="3" :margin-pages="2" 
+      <paginate class="pull-right"
+          :page-count="page" :page-range="3" :margin-pages="2" 
           :click-handler="clickCallback" :prev-text="'Prev'" :next-text="'Next'"
           :container-class="'pagination'" :page-class="'page-item'">
         </paginate>

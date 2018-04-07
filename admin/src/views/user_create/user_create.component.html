@@ -1,0 +1,72 @@
+<div class="animated fadeIn">
+  <form v-on:submit.prevent="edit">
+  <div class="card">
+    <div class="card-header">
+      <div>
+        <strong>Create</strong>
+        <small>User</small>
+      </div>
+    </div>
+    <div class="card-body">
+      <fieldset role="group" class="b-form-group form-group">
+        <!---->
+        <div role="group" class="">
+          <label for="Name">Name</label>
+          <input id="Name" type="text" v-model="user.name" placeholder="Enter name" class="form-control">
+          <label for="name" style="color: red" v-if="error.name">{{error.name?error.name[0]:''}}</label>
+        </div>
+      </fieldset>
+      <fieldset role="group" class="b-form-group form-group">
+        <!---->
+        <div role="group" class="">
+          <label for="Email">Email</label>
+          <input id="Email" type="email" v-model="user.email" placeholder="Enter Email" class="form-control">
+          <label for="email" style="color: red" v-if="error.email">{{error.email?error.email[0]:''}}</label>
+        </div>
+      </fieldset>
+      <fieldset role="group" class="b-form-group form-group">
+        <!---->
+        <div role="group" class="">
+          <label for="Password">Password</label>
+          <input id="Password" type="password" v-model="user.password" placeholder="Enter password" class="form-control">
+          <label for="password" style="color: red" v-if="error.password">{{error.password?error.password[0]:''}}</label>
+        </div>
+      </fieldset>
+      <fieldset role="group" class="b-form-group form-group">
+        <!---->
+        <div role="group" class="">
+          <label for="password_confirmation">Repassword</label>
+          <input id="password_confirmation" type="password" v-model="user.password_confirmation" placeholder="Enter password confirmation" class="form-control">
+          <label for="password_confirmation" style="color: red" v-if="error.password_confirmation">{{error.password_confirmation?error.password_confirmation[0]:''}}</label>
+        </div>
+      </fieldset>
+      <fieldset role="group" class="b-form-group form-group">
+        <!---->
+        <div role="group" class="">
+          <label for="Phone">Phone</label>
+          <input id="Phone" type="number" v-model="user.phone"  placeholder="Enter Phone" class="form-control">
+          <label for="Phone" style="color: red" v-if="error.phone">{{error.phone?error.phone[0]:''}}</label>
+        </div>
+      </fieldset>
+      <fieldset role="group" class="b-form-group form-group">
+        <!---->
+        <div role="group" class="">
+          <label for="Address">Address</label>
+          <input id="Address" v-model="user.address" type="text" placeholder="Enter Address" class="form-control">
+          <label for="address" style="color: red" v-if="error.address">{{error.address?error.address[0]:''}}</label>
+        </div>
+      </fieldset>
+    </div>
+    <div class="card-footer">
+        <div class="pull-right">
+          <button type="submit" class="btn btn-primary btn-sm">
+            <i class="fa fa-dot-circle-o"></i> Submit
+          </button>
+          <button type="reset" class="btn btn-danger btn-sm">
+            <i class="fa fa-ban"></i> Reset
+          </button>
+        </div>
+     </div>
+  </div>
+</form>
+</div>

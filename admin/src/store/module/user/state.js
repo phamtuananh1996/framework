@@ -1,4 +1,5 @@
 export default {
+  page: 0,
   users: [],
   fields: [
     { key: '#' },
