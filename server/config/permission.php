@@ -3,8 +3,7 @@
 return [
 
     'LOGIN_ADMIN'=>'LOGIN_ADMIN',
-
-    'MEMBER'=>'MEMBER',
+    'CATEGORY_MANAGER'=>'CATEGORY_MANAGER',
 
     'models' => [
 

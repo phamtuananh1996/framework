@@ -1,11 +1,13 @@
+import ListCategory from './list'
 export default {
-  name: 'create',
-  components: {},
+  name: 'category',
+  components: {
+    ListCategory
+  },
   props: [],
   data () {
     return {
-      product: {},
-      error: {}
+
     }
   },
   computed: {

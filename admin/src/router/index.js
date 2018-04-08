@@ -13,6 +13,7 @@ import EditUser from '@/views/user_edit/index'
 import Product from '@/views/product/index'
 import ListProduct from '@/views/product/list/index'
 import CreateProduct from '@/views/product/create/index'
+import Category from '@/views/category/index'
 
 Vue.use(Router)
 
@@ -67,6 +68,11 @@ export default new Router({
               component: CreateProduct
             }
           ]
+        },
+        {
+          path: 'category',
+          name: 'category',
+          component: Category
         }
       ]
     },

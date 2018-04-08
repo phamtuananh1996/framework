@@ -16,4 +16,8 @@ use Illuminate\Http\Request;
 
 Route::post('/login','AuthController@login');
 Route::resource('users', 'Users\UserController');
+Route::resource('products', 'Admin\Products\ProductController');
+Route::resource('categories', 'Admin\Categories\CategoryController');
+Route::resource('news', 'Admin\News\NewsController');
+Route::resource('slides', 'Admin\Slides\SlideController');
 

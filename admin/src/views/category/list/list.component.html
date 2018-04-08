@@ -1,0 +1,45 @@
+<div class="animated fadeIn">
+  <div class="row">
+    <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+      <div class="card border-primary">
+        <div class="card-header">
+          <div>Danh sách danh mục</div>
+        </div>
+        <div class="card-body">
+         <table class="table table-hover">
+           <thead>
+             <tr>
+               <th>Stt</th>
+               <th>Name</th>
+               <th>Action</th>
+             </tr>
+           </thead>
+           <tbody>
+             <tr v-for="(category,index) in categories">
+               <td>{{index+1}}</td>
+               <td>{{category.name}}</td>
+               <td>
+                 <button type="button" class="btn btn-danger btn-sm" @click="destroy(index,category)"><i class="fa fa-times"></i></button>
+                 <b-btn v-b-modal.edit class="btn btn-warning btn-sm"  @click="edit(index,category)"><i class="fa fa-edit"></i></b-btn>
+               </td>
+             </tr>
+           </tbody>
+         </table>
+        </div>
+      </div>
+    </div>
+    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+      <div class="card border-primary">
+        <div class="card-header">
+          <div>Thêm danh sách</div>
+        </div>
+        <div class="card-body">
+          <create></create>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div>
+    <edit></edit>
+  </div>
+</div>

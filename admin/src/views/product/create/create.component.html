@@ -1,5 +1,76 @@
+<div class="animated fadeIn">
+  <form v-on:submit.prevent="edit">
+    <div class="card">
+      <div class="card-header">
+        <div>
+          <strong>Create</strong>
+          <small>Product</small>
+        </div>
+      </div>
+      <div class="card-body">
+        <fieldset role="group" class="b-form-group form-group">
+          <!---->
+          <div role="group" class="">
+            <label for="category_id">Category</label>
+            <select class="form-control" v-model="product.category_id">
+              <option></option>
+            </select>
+            <label for="category_id" style="color: red" v-if="error.category_id">{{error.category_id?error.category_id[0]:''}}</label>
+          </div>
+        </fieldset>
+        <fieldset role="group" class="b-form-group form-group">
+          <!---->
+          <div role="group" class="">
+            <label for="Name">Name</label>
+            <input id="Name" type="text" v-model="product.name" placeholder="Enter name" class="form-control">
+            <label for="name" style="color: red" v-if="error.name">{{error.name?error.name[0]:''}}</label>
+          </div>
+        </fieldset>
+        <fieldset role="group" class="b-form-group form-group">
+          <!---->
+          <div role="group" class="">
+            <label for="Emapriceil">Price</label>
+            <input id="price" type="number" v-model="product.price" placeholder="Enter price" class="form-control">
+            <label for="price" style="color: red" v-if="error.price">{{error.price?error.price[0]:''}}</label>
+          </div>
+        </fieldset>
 
-<section class="create">
-  <h1>create Component</h1>
-</section>
-
+        <fieldset role="group" class="b-form-group form-group">
+          <!---->
+          <div role="group" class="">
+            <label for="password_confirmation">Repassword</label>
+            <input id="password_confirmation" type="password" v-model="product.password_confirmation" placeholder="Enter password confirmation"
+              class="form-control">
+            <label for="password_confirmation" style="color: red" v-if="error.password_confirmation">{{error.password_confirmation?error.password_confirmation[0]:''}}</label>
+          </div>
+        </fieldset>
+        <fieldset role="group" class="b-form-group form-group">
+          <!---->
+          <div role="group" class="">
+            <label for="Phone">Phone</label>
+            <input id="Phone" type="number" v-model="product.phone" placeholder="Enter Phone" class="form-control">
+            <label for="Phone" style="color: red" v-if="error.phone">{{error.phone?error.phone[0]:''}}</label>
+          </div>
+        </fieldset>
+        <fieldset role="group" class="b-form-group form-group">
+          <!---->
+          <div role="group" class="">
+            <label for="Address">Address</label>
+            <input id="Address" v-model="product.address" type="text" placeholder="Enter Address" class="form-control">
+            <label for="address" style="color: red" v-if="error.address">{{error.address?error.address[0]:''}}</label>
+          </div>
+        </fieldset>
+      </div>
+      <div class="card-footer">
+        <div class="pull-right">
+          <button type="submit" class="btn btn-primary btn-sm">
+            <i class="fa fa-dot-circle-o"></i> Submit
+          </button>
+          <button type="reset" class="btn btn-danger btn-sm">
+            <i class="fa fa-ban"></i> Reset
+          </button>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

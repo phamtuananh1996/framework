@@ -1,5 +1,29 @@
-
-<section class="list">
-  <h1>list Component</h1>
-</section>
-
+<div class="animated fadeIn">
+  <b-card :header="caption">
+    <div class="table-responsive">
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th v-for='field in fields'>{{field}}</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for='(product,index) in products'>
+            <td>{{product.id}}</td>
+            <td>{{product.name}}</td>
+            <td>{{product.price}}</td>
+            <td>{{product.image}}</td>
+            <td>
+              <button type="button" class="btn btn-info btn-sm" v-on:click.stop="edit(product)">Edit</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <paginate class="pull-right"
+          :page-count="20" :page-range="3" :margin-pages="2" 
+          :click-handler="clickCallback" :prev-text="'Prev'" :next-text="'Next'"
+          :container-class="'pagination'" :page-class="'page-item'">
+        </paginate>
+    </div>
+  </b-card>
+</div>

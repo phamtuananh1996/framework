@@ -38,6 +38,11 @@ export default {
           icon: 'icon-pencil'
         }
       ]
+    },
+    {
+      name: 'Quản lý danh mục',
+      url: '/category',
+      icon: 'fa fa-align-justify'
     }
   ]
 }
