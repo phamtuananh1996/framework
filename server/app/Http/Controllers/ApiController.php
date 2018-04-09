@@ -10,4 +10,18 @@ class ApiController extends Controller
     {
         return response()->json($data,$status);
     }
+
+    public function doUpload($file){
+        $file->move('product',time().$file->getClientOriginalName());
+        return 'product/'.$file->getClientOriginalName();
+    }
+
+    public function doMultiUpload($files){
+        $data=[];
+        foreach ($files as $file) {
+            $file->move('product',time().$file->getClientOriginalName());
+            $data[]='product/'.$file->getClientOriginalName();
+        }
+        return count($files);
+    }
 }

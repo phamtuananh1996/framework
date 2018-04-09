@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin\products;
 use Illuminate\Http\Request;
 use App\Http\Controllers\ApiController;
 use App\Models\Product;
+use App\Http\Requests\ProductRequests\CreateProductRequest;
+use App\Http\Requests\ProductRequests\UpdateProductRequest;
 
 class ProductController extends ApiController
 {
@@ -27,7 +29,15 @@ class ProductController extends ApiController
      */
     public function store(Request $request)
     {
-        //
+        $products=Product::create([
+            'category_id'=>$request->category_id,
+            'name'=>$request->name,
+            'price'=>$request->price,
+            'info'=>$request->info,
+            'image'=>$this->doUpload($request->file('image')),
+            'image_more'=>$this->doUpload($request->file('image_more'))
+        ]);
+        return $this->response($products);
     }
 
     /**

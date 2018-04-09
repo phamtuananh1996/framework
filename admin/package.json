@@ -27,6 +27,7 @@
     "toastr": "^2.1.4",
     "vue": "2.5.13",
     "vue-chartjs": "^3.3.1",
+    "vue-ckeditor2": "^1.25.0",
     "vue-drag-and-drop-list": "^1.0.0",
     "vue-router": "^3.0.1",
     "vuejs-paginate": "^1.9.0",
