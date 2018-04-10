@@ -18,7 +18,7 @@ export default {
         {
           name: 'Thêm khách hàng',
           url: '/user/create',
-          icon: 'icon-user'
+          icon: 'icon-pencil'
         }
       ]
     },
@@ -35,6 +35,23 @@ export default {
         {
           name: 'Thêm sản phẩm',
           url: '/product/create',
+          icon: 'icon-pencil'
+        }
+      ]
+    },
+    {
+      name: 'Quản lý tin tức',
+      url: '/news',
+      icon: 'fa fa-newspaper-o',
+      children: [
+        {
+          name: 'Danh sách',
+          url: '/news/list',
+          icon: 'icon-list'
+        },
+        {
+          name: 'Thêm sản phẩm',
+          url: '/news/create',
           icon: 'icon-pencil'
         }
       ]

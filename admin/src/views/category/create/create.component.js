@@ -1,4 +1,4 @@
-import Helper from '../../../Helper'
+import {HTTP} from '../../../Helper'
 export default {
   name: 'create',
   components: {},
@@ -17,14 +17,15 @@ export default {
   },
   methods: {
     create () {
-      Helper.api('/categories', 'POST', this.category).then(res => {
+      HTTP.post('/categories', this.category).then(res => {
         if (res.status === 200) {
           this.$store.commit('create', res.data)
           this.category = {}
           this.errors = {}
         }
-        if (res.status === 422) {
-          this.errors = res.data.errors
+      }).catch(err => {
+        if (err.response.status === 422) {
+          this.errors = err.response.data.errors
         }
       })
     }

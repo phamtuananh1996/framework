@@ -1,5 +1,6 @@
 import Paginate from 'vuejs-paginate'
-import Helper from '../../../Helper'
+import {HTTP} from '../../../Helper'
+import swal from 'sweetalert'
 export default {
   name: 'list',
   components: {
@@ -8,7 +9,9 @@ export default {
   props: [],
   data () {
     return {
-      caption: 'Product'
+      caption: 'Product',
+      products: [],
+      page: 0
     }
   },
   computed: {
@@ -19,24 +22,52 @@ export default {
         'price',
         'image',
         'category',
-        'Active',
+        'actor',
         'action'
       ]
-    },
-    products () {
-      Helper.api('/products').then(res => {
-        if (res.status === 200) {
-          return res.data
-        }
-      })
     }
   },
   mounted () {
-
+    HTTP.get('/products').then(res => {
+      if (res.status === 200) {
+        this.products = res.data.data
+        this.page = res.data.last_page
+      }
+    })
   },
   methods: {
     clickCallback: function (pageNum) {
-      this.$store.commit('getUser', pageNum)
+      HTTP.get('/products?page=' + pageNum).then(res => {
+        if (res.status === 200) {
+          this.products = res.data.data
+        }
+      })
+    },
+    destroy: function (product, index) {
+      swal({
+        title: 'Are you sure?',
+        text: 'Once deleted, you will not be able to recover this imaginary file!',
+        icon: 'warning',
+        buttons: true,
+        dangerMode: true
+      })
+        .then((willDelete) => {
+          if (willDelete) {
+            HTTP.delete('/products/' + product.id).then(res => {
+              if (res.status === 200) {
+                window.scroll(0, 0)
+                this.products.splice(index, 1)
+                swal('delete success')
+              }
+            })
+          } else {
+            swal('Your imaginary file is safe!')
+          }
+        })
+    },
+
+    edit: function (product) {
+      this.$router.push('edit/' + product.id)
     }
   }
 }

@@ -12,15 +12,20 @@
             <td>{{product.id}}</td>
             <td>{{product.name}}</td>
             <td>{{product.price}}</td>
-            <td>{{product.image}}</td>
             <td>
-              <button type="button" class="btn btn-info btn-sm" v-on:click.stop="edit(product)">Edit</button>
+              <img :src="product.full_image" class="img-responsive" alt="Image" width="50px">
+            </td>
+            <td>{{product.category.name}}</td>
+            <td>{{product.user.name}}</td>
+            <td>
+              <button type="button" class="btn btn-info btn-sm" v-on:click.stop="edit(product)"><i class="fa fa-edit"></i></button>
+              <button type="button" class="btn btn-danger btn-sm" v-on:click.stop="destroy(product,index)"><i class="fa fa-trash"></i></button>
             </td>
           </tr>
         </tbody>
       </table>
       <paginate class="pull-right"
-          :page-count="20" :page-range="3" :margin-pages="2" 
+          :page-count="page" :page-range="3" :margin-pages="2" 
           :click-handler="clickCallback" :prev-text="'Prev'" :next-text="'Next'"
           :container-class="'pagination'" :page-class="'page-item'">
         </paginate>

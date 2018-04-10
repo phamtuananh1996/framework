@@ -1,4 +1,4 @@
-import Helper from '../../../Helper'
+import {HTTP} from '../../../Helper'
 export default {
   name: 'edit',
   components: {},
@@ -14,7 +14,7 @@ export default {
   mounted () {},
   methods: {
     doEdit: function () {
-      Helper.api('/categories/' + this.category.id, 'PUT', this.category).then(res => {
+      HTTP.put('/categories/' + this.category.id, this.category).then(res => {
         if (res.status === 200) {
           this.$store.commit('editCategory', res.data)
         }

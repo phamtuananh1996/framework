@@ -13,7 +13,6 @@ use Illuminate\Http\Request;
 |
 */
 
-
 Route::post('/login','AuthController@login');
 Route::resource('users', 'Users\UserController');
 Route::resource('products', 'Admin\Products\ProductController');

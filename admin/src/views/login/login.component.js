@@ -1,4 +1,4 @@
-import Helper from '@/Helper'
+import {HTTP} from '../../Helper'
 export default {
   name: 'app-login',
   props: [],
@@ -20,7 +20,7 @@ export default {
         email: this.email,
         password: this.password
       }
-      Helper.api('/login', 'POST', data).then(res => {
+      HTTP.post('/login', data).then(res => {
         if (res.status === 200) {
           localStorage.setItem('token', res.data.token)
           localStorage.setItem('user', JSON.stringify(res.data.user))

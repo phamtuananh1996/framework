@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers\Admin\products;
 
-use Illuminate\Http\Request;
 use App\Http\Controllers\ApiController;
-use App\Models\Product;
 use App\Http\Requests\ProductRequests\CreateProductRequest;
 use App\Http\Requests\ProductRequests\UpdateProductRequest;
+use App\Models\Product;
+use Illuminate\Http\Request;
 
 class ProductController extends ApiController
 {
@@ -17,7 +17,7 @@ class ProductController extends ApiController
      */
     public function index()
     {
-        $products=Product::all();
+        $products = Product::with(['category', 'user'])->orderBy('id', 'DESC')->paginate(config('paginate.PAGE_PRODUCT'));
         return $this->response($products);
     }
 
@@ -27,17 +27,18 @@ class ProductController extends ApiController
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CreateProductRequest $request)
     {
-        $products=Product::create([
-            'category_id'=>$request->category_id,
-            'name'=>$request->name,
-            'price'=>$request->price,
-            'info'=>$request->info,
-            'image'=>$this->doUpload($request->file('image')),
-            'image_more'=>$this->doUpload($request->file('image_more'))
+        $product = Product::create([
+            'category_id' => $request->category_id,
+            'user_id' => $this->getUser()->id,
+            'name' => $request->name,
+            'price' => $request->price,
+            'info' => $request->info,
+            'image' => $this->doUpload($request->file('image')),
+            'image_more' => json_encode($request->image_more),
         ]);
-        return $this->response($products);
+        return $this->response($product);
     }
 
     /**
@@ -46,9 +47,10 @@ class ProductController extends ApiController
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Product $product)
     {
-        //
+        $product->image_more = json_decode($product->image_more);
+        return $this->response($product);
     }
 
     /**
@@ -58,9 +60,26 @@ class ProductController extends ApiController
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateProductRequest $request, Product $product)
     {
-        //
+        //return $this->response($request->hasFile('image'));
+        if ($request->hasFile('image')) {
+            if (file_exists(public_path($product->image))) {
+                unlink(public_path($product->image));
+            }
+
+            $product->image = $this->doUpload($request->file('image'));
+            $product->save();
+        }
+        $product->update([
+            'category_id' => $request->category_id,
+            'user_id' => $this->getUser()->id,
+            'name' => $request->name,
+            'price' => $request->price,
+            'info' => $request->info,
+            'image_more' => json_encode($request->image_more),
+        ]);
+        return $this->response($product);
     }
 
     /**
@@ -69,8 +88,13 @@ class ProductController extends ApiController
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Product $product)
     {
-        //
+        if (file_exists(public_path($product->image))) {
+            unlink(public_path($product->image));
+        }
+
+        $product->delete();
+        return $this->response($product);
     }
 }

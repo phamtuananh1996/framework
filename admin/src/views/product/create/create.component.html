@@ -46,7 +46,7 @@
           <!---->
           <div role="group" class="">
             <label for="Image">Image</label>
-            <b-form-file v-model="product.image" :state="Boolean(product.image)" accept="image/*" placeholder="Choose a file..."></b-form-file>
+            <photo-upload @input="onImageChange" :value="value"></photo-upload>
             <label for="Image" style="color: red" v-if="error.image">{{error.image?error.image[0]:''}}</label>
           </div>
         </fieldset>
@@ -55,7 +55,7 @@
           <div role="group" class="">
             <div role="group" class="">
               <label for="Image_more">Image More</label>
-              <b-form-file v-model="product.image_more" :state="Boolean(product.image_more)" multiple accept="image/*" placeholder="Choose a file..."></b-form-file>
+              <vue-dropzone ref="myVueDropzone" id="dropzone" :options="dropzoneOptions" @vdropzone-removed-file="remove" @vdropzone-success="success"></vue-dropzone>
               <label for="Image_more" style="color: red" v-if="error.image_more">{{error.image_more?error.image_more[0]:''}}</label>
             </div>
           </div>

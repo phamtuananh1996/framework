@@ -1,19 +1,9 @@
 import Constants from './Constants'
+import axios from 'axios'
 
-function api (url, method = 'GET', data = '') {
-  let fullPath = Constants.URL_API + url
-  let options = {
-    headers: {
-      'Content-Type': 'application/json',
-      'Accept': 'application/json',
-      'Authorization': 'Bearer ' + localStorage.getItem('token')
-    },
-    method: method
+export const HTTP = axios.create({
+  baseURL: Constants.URL_API,
+  headers: {
+    Authorization: 'Bearer ' + localStorage.getItem('token')
   }
-  if (data) options.body = JSON.stringify(data)
-  return fetch(fullPath, options).then(res => res.json().then(data => ({ status: res.status, data }))).catch(error => console.log(error))
-}
-
-export default {
-  api
-}
+})

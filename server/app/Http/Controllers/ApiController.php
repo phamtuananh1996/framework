@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use JWTAuth;
 
 class ApiController extends Controller
 {
@@ -11,16 +12,23 @@ class ApiController extends Controller
         return response()->json($data,$status);
     }
 
+    public function getUser()
+    {
+        return $user = JWTAuth::parseToken()->authenticate();
+    }
+
     public function doUpload($file){
-        $file->move('product',time().$file->getClientOriginalName());
-        return 'product/'.$file->getClientOriginalName();
+        $name=time().$file->getClientOriginalName();
+        $file->move('product',$name);
+        return '/product/'.$name;
     }
 
     public function doMultiUpload($files){
         $data=[];
         foreach ($files as $file) {
-            $file->move('product',time().$file->getClientOriginalName());
-            $data[]='product/'.$file->getClientOriginalName();
+            $name=time().$file->getClientOriginalName();
+            $file->move('product',$name);
+            $data[]='/product/'.$name;
         }
         return count($files);
     }

@@ -17,6 +17,7 @@
     "build": "node build/build.js"
   },
   "dependencies": {
+    "axios": "^0.18.0",
     "bootstrap": "4.0.0",
     "bootstrap-vue": "2.0.0-rc.1",
     "chart.js": "^2.7.2",
@@ -30,6 +31,7 @@
     "vue-ckeditor2": "^1.25.0",
     "vue-drag-and-drop-list": "^1.0.0",
     "vue-router": "^3.0.1",
+    "vue2-dropzone": "^3.0.6",
     "vuejs-paginate": "^1.9.0",
     "vuex": "^3.0.1"
   },

@@ -18,7 +18,7 @@ class CreateProductsTable extends Migration
             $table->integer('category_id');
             $table->integer('user_id');
             $table->string('name');
-            $table->float('price');
+            $table->integer('price');
             $table->boolean('state')->default(true);
             $table->string('image')->default('http://lorempixel.com/640/480/');
             $table->text('image_more')->nullable();

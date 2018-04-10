@@ -1,6 +1,6 @@
 import Create from '../create/index'
 import Edit from '../edit/index'
-import Helper from '../../../Helper'
+import {HTTP} from '../../../Helper'
 import swal from 'sweetalert'
 export default {
   name: 'list',
@@ -19,7 +19,7 @@ export default {
     }
   },
   mounted () {
-    Helper.api('/categories', 'GET').then(res => {
+    HTTP.get('/categories').then(res => {
       if (res.status === 200) {
         this.$store.commit('fetch', res.data)
       }
@@ -36,7 +36,7 @@ export default {
       })
         .then((willDelete) => {
           if (willDelete) {
-            Helper.api('/categories/' + category.id, 'DELETE').then(res => {
+            HTTP.delete('/categories/' + category.id).then(res => {
               if (res.status === 200) {
                 this.$store.commit('destroy', index)
               }
@@ -47,7 +47,7 @@ export default {
         })
     },
     edit (index, category) {
-      Helper.api('/categories/' + category.id).then(res => {
+      HTTP.get('/categories/' + category.id).then(res => {
         if (res.status === 200) {
           this.$store.commit('selectItem', res.data)
         }
