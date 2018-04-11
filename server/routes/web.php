@@ -12,5 +12,11 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view("index");
 });
+ Route::get('/login','UserController@ViewLogin');
+ Route::get('/logout','UserController@Logout');
+ Route::get('/register','UserController@ViewRegister');
+ Route::Post('/login','UserController@Login');
+ Route::Post('/register','UserController@Register');
+ Route::Post('/getmsg','SPController@getAllSp');
