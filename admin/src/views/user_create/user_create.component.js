@@ -1,4 +1,4 @@
-import Helper from '../../Helper'
+import {HTTP} from '../../Helper'
 export default {
   name: 'user-create',
   props: [],
@@ -16,14 +16,13 @@ export default {
   },
   methods: {
     create () {
-      Helper.api('/users', 'POST', this.user).then(res => {
+      HTTP.post('/users', this.user).then(res => {
         if (res.status === 200) {
           this.$router.push('/user/list')
-        } else {
-          if (res.status === 422) {
-            this.error = res.data.errors
-            console.log(this.error)
-          }
+        }
+      }).catch(err => {
+        if(err.response.status===422){
+          this.error = err.response.data.errors
         }
       })
     }

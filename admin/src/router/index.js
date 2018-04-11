@@ -15,6 +15,10 @@ import ListProduct from '@/views/product/list/index'
 import EditProduct from '@/views/product/edit/index'
 import CreateProduct from '@/views/product/create/index'
 import Category from '@/views/category/index'
+import News from '@/views/news/index'
+import CreateNews from '@/views/news/create/index'
+import EditNews from '@/views/news/edit/index'
+import ListNews from '@/views/news/list/index'
 
 Vue.use(Router)
 
@@ -72,6 +76,29 @@ export default new Router({
               path: 'edit/:id',
               name: 'Edit product',
               component: EditProduct
+            }
+          ]
+        },
+        {
+          path: 'news',
+          name: 'news',
+          redirect: 'news/list',
+          component: News,
+          children: [
+            {
+              path: 'list',
+              name: 'List News',
+              component: ListNews
+            },
+            {
+              path: 'create',
+              name: 'Create News',
+              component: CreateNews
+            },
+            {
+              path: 'edit/:id',
+              name: 'Edit News',
+              component: EditNews
             }
           ]
         },
