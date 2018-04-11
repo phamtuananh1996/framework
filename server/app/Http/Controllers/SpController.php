@@ -3,13 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Category;
+use App\Models\Product;
 
 class SpController extends Controller
 {
     public function getAllSp()
     {
-        $sp=Category::all();
-        return responese()->json($sp);
+        $sp=Product::all();
+        return view("index",compact('sp'));
     }
 }

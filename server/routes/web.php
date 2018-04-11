@@ -11,12 +11,10 @@
 |
 */
 
-Route::get('/', function () {
-    return view("index");
-});
+Route::get('/','SPController@getAllSp');
  Route::get('/login','UserController@ViewLogin');
  Route::get('/logout','UserController@Logout');
  Route::get('/register','UserController@ViewRegister');
  Route::Post('/login','UserController@Login');
  Route::Post('/register','UserController@Register');
- Route::Post('/getmsg','SPController@getAllSp');
+
