@@ -12,4 +12,11 @@ class SpController extends Controller
         $sp=Product::all();
         return view("index",compact('sp'));
     }
+
+    public function GetSp($id)
+    {
+        $spct=Product::find($id);
+       
+        return view("chitietsp",compact('spct'));
+    }
 }

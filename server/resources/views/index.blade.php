@@ -1,10 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if IE 7]><html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if IE 9 ]><html class="ie9 no-js"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!-->
+<html class="no-js" lang="vi">
+<!--<![endif]-->
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
     <link rel="shortcut icon" href="./theme.hstatic.net/1000177652/1000229231/14/favicon.png?v=90"
         type="image/png" />
     <meta charset="utf-8" />
@@ -19,8 +21,8 @@
         name='viewport' />
     <link rel="dns-prefetch" href="http://happylive.vn">
     <link rel="dns-prefetch" href="./hstatic.net">
-
-	//<![CDATA[
+    <script>
+//<![CDATA[
         (function (i, s, o, g, r, a, m) {
             i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
                 (i[r].q = i[r].q || []).push(arguments)
@@ -68,12 +70,14 @@ document, 'script', './connect.facebook.net/en_US/fbevents.js');
 //<![CDATA[
         (function () { function asyncLoad() { var urls = ["./hstatic.net/652/1000177652/20/2017/4-10/noname.js"]; for (var i = 0; i < urls.length; i++) { var s = document.createElement('script'); s.type = 'text/javascript'; s.async = true; s.src = urls[i]; var x = document.getElementsByTagName('script')[0]; x.parentNode.insertBefore(s, x); } } window.attachEvent ? window.attachEvent('onload', asyncLoad) : window.addEventListener('load', asyncLoad, false); })();
 //]]>
-
-
-    // <script src="./hstatic.net/0/0/global/design/js/jquery.min.1.11.0.js"></script>
+    </script>
+    <script src="./hstatic.net/0/0/global/design/js/jquery.min.1.11.0.js"></script>
     <script src="./hstatic.net/0/0/global/design/js/bootstrap.min.js"></script>
     <script src='./hstatic.net/0/0/global/option_selection.js' type='text/javascript'></script>
     <script src='./hstatic.net/0/0/global/api.jquery.js' type='text/javascript'></script>
+    <script>
+        var formatMoney = '{{100}}₫';
+    </script>
     <script src='./theme.hstatic.net/1000177652/1000229231/14/default_script.min.js?v=90'
         type='text/javascript'></script>
     <link href='./theme.hstatic.net/1000177652/1000229231/14/default_style.min.css?v=90'
@@ -91,7 +95,6 @@ document, 'script', './connect.facebook.net/en_US/fbevents.js');
         type='text/javascript'></script>
     <link href='./hstatic.net/0/0/global/design/theme-default/flexslider.css' rel='stylesheet'
         type='text/css' media='all' />
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src='./theme.hstatic.net/1000177652/1000229231/14/scripts.js?v=90' type='text/javascript'></script>
     <link rel="stylesheet" type="text/css" href="./hstatic.net/0/0/global/design/member/fonts-master/roboto.css">
     <meta property="og:type" content="website" />
@@ -109,7 +112,7 @@ document, 'script', './connect.facebook.net/en_US/fbevents.js');
         type='text/css' media='all' />
 </head>
 <body>
-<nav id="menu-mobile" class="hidden">
+    <nav id="menu-mobile" class="hidden">
 	<ul>
 			
 			
@@ -282,10 +285,174 @@ document, 'script', './connect.facebook.net/en_US/fbevents.js');
                 </div>
             </div>
         </div>
+        <script>
+            /* QUICK VIEW JS */
+            jQuery(document).ready(function () {
+                var callBack = function (variant, selector) {
+                    if (variant) {
+                        item = $('.wrapper-quickview');
+                        if (variant != null && variant.featured_image != null) {
+                            item.find(".product-thumb a[data-image='" + Haravan.resizeImage(variant.featured_image.src, 'large') + "']").click();
+                        }
+                        item.find('.quickview-price').find('span').html(Haravan.formatMoney(variant.price, "{{100}}₫"));
 
-		
+                        if (variant.compare_at_price > variant.price)
+                            item.find('.quickview-price').find('del').html(Haravan.formatMoney(variant.compare_at_price, "{{100}}₫"));
+                        else
+                            item.find('.quickview-price').find('del').html('');
+                        if (variant.available) {
+                            item.find('.btn-addcart').css('display', 'block');
+                            item.find('.btn-soldout').css('display', 'none');
+                        }
+                        else {
+                            item.find('.btn-addcart').css('display', 'none');
+                            item.find('.btn-soldout').css('display', 'block');
+                        }
+                    }
+                    else {
+                        item.find('.btn-addcart').css('display', 'none');
+                        item.find('.btn-soldout').css('display', 'block');
+                    }
+                }
+                var quickview_html_variants = $('.quickview-variants').html();
+                var quickview_image_zoom = $('.quickview-image').html();
+                var quickViewProduct = function (purl) {
+                    if ($(window).width() < 680) {
+                        window.location = purl;
+                        return false;
+                    }
+                    item = $('.wrapper-quickview');
+                    $.ajax({
+                        url: purl + '.js',
+                        async: false,
+                        success: function (product) {
+                            $.each(product.options, function (i, v) {
+                                product.options[i] = v.name;
+                            })
+                            item.find('.quickview-title').attr('title', product.title).attr('href', product.url).find('h4').html(product.title);
+                            item.find('.quickview-variants').html(quickview_html_variants);
+                            $('.quickview-image').html(quickview_image_zoom);
+                            $.each(product.variants, function (i, v) {
+                                item.find('#quickview-select').append("<option value='" + v.id + "'>" + v.title + ' - ' + v.price + "</option>");
+                            })
+                            if (product.variants.length == 1 && product.variants[0].title.indexOf('Default') != -1)
+                                $('#quickview-select').hide();
+                            else
+                                $('#quickview-select').show();
+                            if (product.variants.length == 1 && product.variants[0].title.indexOf('Default') != -1) {
+                                callBack(product.variants[0], null);
+                            }
+                            else {
+                                new Haravan.OptionSelectors("quickview-select", { product: product, onVariantSelected: callBack });
+                                if (product.options.length == 1 && product.options[0].indexOf('Tiêu đề') == -1)
+                                    item.find('.selector-wrapper:eq(0)').prepend('<label>' + product.options[0] + '</label>');
+                                $('.p-option-wrapper select:not(#p-select)').each(function () {
+                                    $(this).wrap('<span class="custom-dropdown custom-dropdown--white"></span>');
+                                    $(this).addClass("custom-dropdown__select custom-dropdown__select--white");
+                                });
+                                callBack(product.variants[0], null);
+                            }
+                            if (product.images.length == 0) {
+                                item.find('.quickview-image').find('img').attr('alt', product.title).attr('src', './hstatic.net/0/0/global/design/theme-default/no-image.png');
+                            }
+                            else {
+                                $('.quickview-slider').remove();
+                                $('#quickview-sliderproduct').append("<div class='quickview-slider' class='flexslider'>");
+                                $('.quickview-slider').append("<ul class='owl-carousel'>");
+                                $.each(product.images, function (i, v) {
+                                    elem = $('<li class="product-thumb">').append('<a href="javascript:void(0);" data-image=""><img /></a>');
+                                    elem.find('a').attr('data-image', Haravan.resizeImage(v, 'large'));
+                                    elem.find('img').attr('src', Haravan.resizeImage(v, 'small'));
+                                    item.find('.owl-carousel').append(elem);
+                                });
+                                item.find('.quickview-image img').attr('alt', product.title).attr('src', Haravan.resizeImage(product.featured_image, 'large'));
+
+                                $('.quickview-slider img').imagesLoaded(function () {
+                                    var owl = $('.owl-carousel');
+                                    owl.owlCarousel({
+                                        items: 3,
+                                        navigation: true,
+                                        navigationText: ['owl-prev', 'owl-next']
+                                    });
+                                    $('.quickview-slider .owl-carousel .owl-item').first().children('.product-thumb').addClass('active');
+                                });
+
+                            }
+
+                        }
+                    });
+                    return false;
+                }
+                //final width --> this is the quick view image slider width
+                //maxQuickWidth --> this is the max-width of the quick-view panel
+                var sliderFinalWidth = 500,
+			maxQuickWidth = 900;
+
+                //open the quick view panel
+                jQuery(document).on("click", ".quickview", function (event) {
+                    var selectedImage = $(this).parents('.product-block').find('.product-img img'),
+				slectedImageUrl = selectedImage.attr('src');
+                    quickViewProduct($(this).attr('data-handle'));
+
+                    animateQuickView(selectedImage, sliderFinalWidth, maxQuickWidth, 'open');
+
+                    //update the visible slider image in the quick view panel
+                    //you don't need to implement/use the updateQuickView if retrieving the quick view data with ajax
+
+                });
+
+                $('.wrapper-quickview').on('click', '.product-thumb a', function () {
+                    item = $('.wrapper-quickview');
+                    item.find('.quickview-image img').attr('src', $(this).attr('data-image'));
+                    item.find('.product-thumb').removeClass('active');
+                    $(this).parents('li').addClass('active');
+                    return false;
+                });
+                //close the quick view panel
+
+                $(document).on('click', '.quickview-close, .quickviewOverlay', function (e) {
+                    $(".wrapper-quickview").fadeOut(500);
+
+                    $('.jsQuickview').fadeOut(500);
+                });
 
 
+                //center quick-view on window resize
+                $(window).on('resize', function () {
+                    if ($('.wrapper-quickview').hasClass('is-visible')) {
+                        window.requestAnimationFrame(resizeQuickView);
+                    }
+                });
+
+                function animateQuickView(image, finalWidth, maxQuickWidth, animationType) {
+
+                    $('.wrapper-quickview').fadeIn(500);
+                    $('.jsQuickview').fadeIn(500);
+                }
+
+                $(document).on("click", ".btn-addcart", function (event) {
+                    event.preventDefault();
+                    variant_id_quickview = $('#quickview-select').val();
+                    quantity_quickview = $('#quantity-quickview').val();
+                    var params = {
+                        type: 'POST',
+                        url: '/cart/add.js',
+                        async: true,
+                        data: 'quantity=' + quantity_quickview + '&id=' + variant_id_quickview,
+                        dataType: 'json',
+                        success: function (line_item) {
+                            window.location = '/cart';
+                        },
+                        error: function (XMLHttpRequest, textStatus) {
+                            alert('Sản phẩm bạn vừa mua đã vượt quá tồn kho');
+                        }
+                    };
+                    jQuery.ajax(params);
+                });
+
+
+            });
+        </script>
         <section id="page_content" class="">
 				<div id="pageContainer" class="clearfix">
 					<header class="header bkg visible-lg">
@@ -407,10 +574,7 @@ document, 'script', './connect.facebook.net/en_US/fbevents.js');
 								</li>
 								
 																			
-								
-								
-								
-
+							
 								@if(session('user'))
 								
 									<li><a class="log" href="#" title="account">Xin chào :  {{ session('user') }}  </a></li>
@@ -422,7 +586,7 @@ document, 'script', './connect.facebook.net/en_US/fbevents.js');
 								
 								@endif
 								
-		
+
 
 								
 
@@ -650,6 +814,8 @@ document, 'script', './connect.facebook.net/en_US/fbevents.js');
 
 </script>
 </nav>
+					
+					
 <!-- Begin slider -->
 <div class="slider-default bannerslider">
 	<div class="hrv-banner-container">
@@ -752,6 +918,8 @@ document, 'script', './connect.facebook.net/en_US/fbevents.js');
 	</div>
 </div>
 <!-- End slider -->
+
+
 <script>
 jQuery(document).ready(function(){
 	if ( $('.slides li').size() > 0 ) {
@@ -789,8 +957,11 @@ jQuery(document).ready(function(){
 })
 
 </script>
-		
-        </div>
+
+					
+
+						
+					</div>
 					<section id="content" class="clearfix container">
 						<div class="row">
 							<div class="col-md-12 col-sm-12 col-xs-12">
@@ -830,10 +1001,10 @@ jQuery(document).ready(function(){
 						<span class="icon"><img src="./theme.hstatic.net/1000177652/1000229231/14/icon_featured.png?v=90" alt=""></span>
 						
 					</aside>
-					
+				</div>
+			</div>	
 			<!--Product loop-->
 			<div class="row content-product-list products-resize">
-		
 			@foreach($sp as $item)
 		
 	<!-- item	 -->
@@ -865,7 +1036,7 @@ jQuery(document).ready(function(){
 									</a>
 								</div>
 								<div class="btn-quickview-products">
-									<a href="javascript:void(0);" class="quickview" data-handle="/products/dong-ho-nam-skmei-kim-xanh-duong"><i class="fa fa-eye"></i></a>
+									<a href="chitiet/{{$item['id']}}" class="quickview" data-handle="/products/dong-ho-nam-skmei-kim-xanh-duong"><i class="fa fa-eye"></i></a>
 								</div>
 							</div>
 					
@@ -877,8 +1048,8 @@ jQuery(document).ready(function(){
 							<!-- sử dụng pull-left -->
 							<h3 class="pro-name"><a href="/products/dong-ho-nam-skmei-kim-xanh-duong" title="ĐỒNG HỒ NAM SKMEI KIM XANH DƯƠNG">{{$item['name']}} </a></h3>
 							<div class="pro-prices">	
-								<p class="pro-price">{{$item['price']}}</p>
-								<p class="pro-price-del text-left"><del class="compare-price">{{$item['info']}}</del></p>	
+								<p class="pro-price">{{$item['price'] - $item['price']*0.2}}</p>
+								<p class="pro-price-del text-left"><del class="compare-price">{{$item['price']}}</del></p>	
 					
 					
 							</div>
@@ -891,32 +1062,7 @@ jQuery(document).ready(function(){
 									<!-- /item	 -->
 			@endforeach
 			
-			</div>
-			</div>
-		<div class="banner-bottom">
-			<div class="row">
-				
-				<div class="col-xs-12 col-sm-6 home-category-item-2">
-					<div class="block-home-category"> 
-						<a   href="http://happylive.vn/collections/dong-ho-nam">
-							<img class="b-lazy b-loaded" src="./theme.hstatic.net/1000177652/1000229231/14/block_home_category1.jpg?v=90"  alt="nam">
-						</a>			
-					</div>
-				</div>
-				
-				
-				<div class="col-xs-12 col-sm-6 home-category-item-3">
-					<div class="block-home-category">
-						<a   href="http://happylive.vn/collections/dong-ho-nu">
-							<img class="b-lazy b-loaded" src="./theme.hstatic.net/1000177652/1000229231/14/block_home_category2.jpg?v=90" alt="nữ">
-						</a>
-					</div>
-				</div>
-				
-			</div>
-
 		</div>
-	</div>
 	<!-- end Content-->
 </div>
 						</div>
@@ -1110,7 +1256,8 @@ jQuery(document).ready(function(){
 <div style="clear:both;" >
 	
 </div>
-!-- #Facebook widget -->
+
+<!-- #Facebook widget -->
 <script>
     (function (d, s, id) {
         var js, fjs = d.getElementsByTagName(s)[0];
@@ -1120,7 +1267,8 @@ jQuery(document).ready(function(){
         fjs.parentNode.insertBefore(js, fjs);
     } (document, 'script', 'facebook-jssdk'));
 </script>
-	</div>
+	
+						</div>
 					</div>
 				</div>
 				
@@ -1229,7 +1377,6 @@ jQuery(document).ready(function(){
 		</div>
 	</div>
 </div>
-
 					<svg xmlns="http://www.w3.org/2000/svg" class="hidden">	
 	<symbol id="icon-add-cart">
 		<svg xmlns="http://www.w3.org/2000/svg"   xmlns:xlink="http://www.w3.org/1999/xlink"  x="0px" y="0px"
@@ -1297,7 +1444,8 @@ jQuery(document).ready(function(){
 			<g>
 			</g>
 		</svg>
-        </symbol>
+
+	</symbol>
 	<symbol id="icon-sort-by">
 		<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 				 viewBox="0 0 490 490" style="enable-background:new 0 0 490 490;" xml:space="preserve">

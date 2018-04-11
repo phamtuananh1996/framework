@@ -17,4 +17,5 @@ Route::get('/','SPController@getAllSp');
  Route::get('/register','UserController@ViewRegister');
  Route::Post('/login','UserController@Login');
  Route::Post('/register','UserController@Register');
+ Route::get('/chitiet/{id}','SpController@GetSp');
 

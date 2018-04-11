@@ -24,7 +24,7 @@ class UserController extends Controller
         if($tk)
         {
             $request->session()->put('user',$username);
-            return redirect("/");
+            return redirect("");
         }
         else{
             return redirect("login")->with(['err'=>"error"]);
