@@ -27,9 +27,9 @@ export default {
           localStorage.setItem('permissions', JSON.stringify(res.data.permissions))
           this.error = ''
           this.$router.push('/')
-        } else {
-          this.error = res.data
         }
+      }).catch(e => {
+        this.error = e.response.data
       })
     }
   }

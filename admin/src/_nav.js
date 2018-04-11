@@ -50,7 +50,7 @@ export default {
           icon: 'icon-list'
         },
         {
-          name: 'Thêm sản phẩm',
+          name: 'Thêm tin tức',
           url: '/news/create',
           icon: 'icon-pencil'
         }

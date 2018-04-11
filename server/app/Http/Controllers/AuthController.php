@@ -45,9 +45,9 @@ class AuthController extends ApiController
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function getUserLogin()
     {
-        //
+        return $this->response($this->getUser());
     }
 
     /**

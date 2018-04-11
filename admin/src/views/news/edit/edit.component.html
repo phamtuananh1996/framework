@@ -1,0 +1,49 @@
+<div class="animated fadeIn">
+  <form v-on:submit.prevent="edit" enctype="multipart/form-data">
+    <div class="card">
+      <div class="card-header">
+        <div>
+          <strong>Tạo mới tin tức</strong>
+          <small>create news</small>
+        </div>
+      </div>
+      <div class="card-body">
+        <fieldset role="group" class="b-form-group form-group">
+          <!---->
+          <div role="group" class="">
+            <label for="title">Tiêu đề :</label>
+            <input id="title" v-model="news.title" class="form-control" type="text" >
+            <label for="title" style="color: red" v-if="error.title">{{error.title?error.title[0]:''}}</label>
+          </div>
+        </fieldset>
+        <fieldset role="group" class="b-form-group form-group">
+          <!---->
+          <div role="group" class="">
+            <label for="info">Nội dung :</label>
+            <ckeditor v-model="news.content" :config="config">
+            </ckeditor>
+            <label for="content" style="color: red" v-if="error.content">{{error.content?error.content[0]:''}}</label>
+          </div>
+        </fieldset>
+        <fieldset role="group" class="b-form-group form-group">
+          <!---->
+          <div role="group" class="">
+            <label for="Image">Ảnh :</label>
+            <photo-upload @input="onImageChange" :value="news.full_image"></photo-upload>
+            <label for="Image" style="color: red" v-if="error.image">{{error.image?error.image[0]:''}}</label>
+          </div>
+        </fieldset>
+      </div>
+      <div class="card-footer">
+        <div class="pull-right">
+          <button type="submit" class="btn btn-primary btn-sm">
+            <i class="fa fa-dot-circle-o"></i> Submit
+          </button>
+          <button type="reset" class="btn btn-danger btn-sm">
+            <i class="fa fa-ban"></i> Reset
+          </button>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

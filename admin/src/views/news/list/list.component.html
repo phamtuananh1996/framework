@@ -1,0 +1,34 @@
+<div class="animated fadeIn">
+  <b-card :header="caption">
+    <div class="table-responsive">
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th v-for='field in fields'>{{field}}</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for='(news,index) in newss'>
+            <td>{{news.id}}</td>
+            <td>{{news.title}}</td>
+            <td>
+              <img :src="news.full_image" class="img-responsive" alt="Image" width="50px">
+            </td>
+            <td>{{news.user.name}}</td>
+            <td>
+              <button type="button" class="btn btn-info btn-sm" v-on:click.stop="edit(news)"><i class="fa fa-edit"></i></button>
+              <button type="button" class="btn btn-danger btn-sm" v-on:click.stop="destroy(news,index)"><i class="fa fa-trash"></i></button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <paginate class="pull-right"
+          :page-count="page" :page-range="3" :margin-pages="2" 
+          :click-handler="clickCallback" :prev-text="'Prev'" :next-text="'Next'"
+          :container-class="'pagination'" :page-class="'page-item'">
+        </paginate>
+    </div>
+  </b-card>
+</div>
+
+

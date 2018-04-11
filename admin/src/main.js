@@ -6,6 +6,7 @@ import App from './App'
 import router from './router'
 import store from './store/store'
 import VueDragAndDropList from 'vue-drag-and-drop-list'
+import {HTTP} from './Helper'
 
 Vue.use(VueDragAndDropList)
 Vue.use(BootstrapVue)
@@ -20,7 +21,15 @@ router.beforeEach((to, from, next) => {
         query: { redirect: to.fullPath }
       })
     } else {
-      next()
+      HTTP.get('/getuser').then(res => {
+        next()
+      }).catch(e => {
+        console.log(e)
+        next({
+          path: '/login',
+          query: { redirect: to.fullPath }
+        })
+      })
     }
   } else {
     next() // make sure to always call next()!

@@ -3,10 +3,17 @@
 namespace App\Http\Controllers\Admin\News;
 
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\ApiController;
+use App\Models\News;
+use App\Http\requests\NewsRequests\CreateNewsRequest;
+use App\Http\requests\NewsRequests\UpdateNewsRequest;
 
-class NewsController extends Controller
+class NewsController extends ApiController
 {
+    public function __construct() {
+        $this->middleware('jwt.auth');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +21,8 @@ class NewsController extends Controller
      */
     public function index()
     {
-        //
+        $news=News::with('user')->paginate(config('paginate.PAGE_NEWS'));
+        return $this->response($news);
     }
 
     /**
@@ -23,9 +31,16 @@ class NewsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CreateNewsRequest $request)
     {
-        //
+        $news=News::create([
+            'user_id'=>$this->getUser()->id,
+            'title'=>$request->title,
+            'state'=>1,
+            'content'=>$request->content,
+            'image'=>$this->doUpload($request->file('image')),
+        ]);
+        return $this->response($news);
     }
 
     /**
@@ -34,9 +49,9 @@ class NewsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(News $news)
     {
-        //
+        return $this->response($news);
     }
 
     /**
@@ -46,9 +61,23 @@ class NewsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateNewsRequest $request, News $news)
     {
-        //
+        if ($request->hasFile('image')) {
+            if (file_exists(public_path($news->image))) {
+                unlink(public_path($news->image));
+            }
+
+            $news->image = $this->doUpload($request->file('image'));
+            $news->save();
+        }
+        $news->update([
+            'user_id'=>$this->getUser()->id,
+            'title'=>$request->title,
+            'state'=>1,
+            'content'=>$request->content,
+        ]);
+        return $this->response($news);
     }
 
     /**
@@ -57,8 +86,13 @@ class NewsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(News $news)
     {
-        //
+        if (file_exists(public_path($news->image))) {
+            unlink(public_path($news->image));
+        }
+
+        $news->delete();
+        return $this->response($news);
     }
 }
