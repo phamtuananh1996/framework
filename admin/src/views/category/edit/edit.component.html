@@ -2,6 +2,7 @@
   <div class="form-group">
     <label for="">Name</label>
     <input type="text" v-model='category.name' class="form-control" id="" placeholder="Name category">
+    <label for="name" style="color: red" v-if="errors.name">{{errors.name?errors.name[0]:''}}</label>
   </div>
 </b-modal>
 

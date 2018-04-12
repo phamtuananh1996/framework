@@ -4,7 +4,9 @@ export default {
   components: {},
   props: [],
   data () {
-    return {}
+    return {
+      errors: {}
+    }
   },
   computed: {
     category () {

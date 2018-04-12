@@ -21,5 +21,8 @@ export default {
         element.name = groupCategory.name
       }
     })
+  },
+  createCategory (state, data) {
+    state.groupCategory[data.index].category.push(data.category)
   }
 }

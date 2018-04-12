@@ -1,9 +1,9 @@
 <div class="animated fadeIn">
   <div class="row">
     <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
-      <div class="card border-primary" v-b-modal.edit v-for="(group,index) in groupCategories">
+      <div class="card border-primary" v-for="(group,index) in groupCategories">
         <div class="card-header">
-          <div>{{group.name}} <a href="#" @click="editGroup(index,group)">&nbsp;&nbsp;<i class="fa fa-edit"></i></a> <a href="#" class="pull-right" @click="destroyGroup(index,group)">x</a></div>
+          <div>{{group.name}} <a href="#" v-b-modal.edit @click="editGroup(index,group)">&nbsp;&nbsp;<i class="fa fa-edit"></i></a> <a href="#" class="pull-right" @click="destroyGroup(index,group)">x</a></div>
         </div>
         <div class="card-body">
          <table class="table table-hover">
@@ -25,9 +25,13 @@
              </tr>
            </tbody>
          </table>
-        </div>
-        <div class="card-footer">
-          <button type="button" class="btn btn-primary btn-sm pull-right">Thêm</button>
+         <form v-on:submit.prevent="create(index)">
+          <div class="form-group">
+            <input type="hidden" ng-model="category.parent_id" :value="group.id">
+            <input type="text" ng-model="category.name" class="form-control" id="" placeholder="Name category">
+            <label for="name" style="color: red" v-if="errors.name">{{errors.name?errors.name[0]:''}}</label>
+          </div>
+        </form>
         </div>
       </div>
     </div>

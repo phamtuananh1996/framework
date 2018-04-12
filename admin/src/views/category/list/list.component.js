@@ -11,6 +11,8 @@ export default {
   props: [],
   data () {
     return {
+      category: {},
+      errors: {}
     }
   },
   computed: {
@@ -50,6 +52,20 @@ export default {
       HTTP.get('/groupcategories/' + groupCategory.id).then(res => {
         if (res.status === 200) {
           this.$store.commit('selectItem', res.data)
+        }
+      })
+    },
+    create (index) {
+      HTTP.post('/categories', this.category).then(res => {
+        if (res.status === 200) {
+          var category = res.data
+          this.$store.commit('createCategory', {index, category})
+          this.category = {}
+          this.errors = {}
+        }
+      }).catch(err => {
+        if (err.response.status === 422) {
+          this.errors = err.response.data.errors
         }
       })
     }
