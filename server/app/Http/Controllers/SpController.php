@@ -16,7 +16,7 @@ class SpController extends Controller
     public function GetSp($id)
     {
         $spct=Product::find($id);
-       
-        return view("chitietsp",compact('spct'));
+        $dsspht=Product::limit(4)->get();
+        return view("chitietsp",compact('spct'),compact('dsspht'));
     }
 }
