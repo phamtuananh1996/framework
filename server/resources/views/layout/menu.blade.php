@@ -7,7 +7,7 @@
                     <div class="menu-logo">
                         <h1 class="logo logo-mobile">
                             <a href="http://happylive.vn">
-                                <img src="./theme.hstatic.net/1000177652/1000229231/14/logo.png?v=90" alt="Happylive" class="img-responsive logoimg" />
+                                <img src="/theme.hstatic.net/1000177652/1000229231/14/logo.png?v=90" alt="Happylive" class="img-responsive logoimg" />
                             </a>
                         </h1>
                         <div class="nav-login">
@@ -31,7 +31,7 @@
                                 <span>
 
                                     <svg class="shopping-cart">
-                                        <use xmlns:xlink="./www.w3.org/1999/xlink" xlink:href="#icon-add-cart" />
+                                        <use xmlns:xlink="/www.w3.org/1999/xlink" xlink:href="#icon-add-cart" />
                                     </svg>
                                 </span>
                                 <span id="cart-count" class="cart-number">0</span>
@@ -45,7 +45,7 @@
                                 <input type="text" name="q" placeholder="Tìm kiếm sản phẩm ..." />
                                 <button type="submit" class="icon-search">
                                     <svg class="icon-search_white">
-                                        <use xmlns:xlink="./www.w3.org/1999/xlink" xlink:href="#icon-search_white" />
+                                        <use xmlns:xlink="/www.w3.org/1999/xlink" xlink:href="#icon-search_white" />
                                     </svg>
                                 </button>
                             </form>

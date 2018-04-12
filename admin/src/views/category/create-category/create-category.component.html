@@ -1,0 +1,6 @@
+<form v-on:submit.prevent="create(index,groupcategory)">
+    <div class="form-group">
+      <input type="text" v-model="category.name" class="form-control" id="name" placeholder="Name category">
+      <label for="name" style="color: red" v-if="errors.name">{{errors.name?errors.name[0]:''}}</label>
+    </div>
+  </form>

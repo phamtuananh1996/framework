@@ -2,7 +2,7 @@ import {HTTP} from '../../../Helper'
 export default {
   name: 'edit',
   components: {},
-  props: [],
+  props: ['type'],
   data () {
     return {
       errors: {}
@@ -16,11 +16,19 @@ export default {
   mounted () {},
   methods: {
     doEdit: function () {
-      HTTP.put('/categories/' + this.category.id, this.category).then(res => {
-        if (res.status === 200) {
-          this.$store.commit('editCategory', res.data)
-        }
-      })
+      if (this.type === 'groupCategory') {
+        HTTP.put('/groupcategories/' + this.category.id, this.category).then(res => {
+          if (res.status === 200) {
+            this.$store.commit('edit', res.data)
+          }
+        })
+      } else {
+        HTTP.put('/categories/' + this.category.id, this.category).then(res => {
+          if (res.status === 200) {
+            this.$store.commit('editCategory', res.data)
+          }
+        })
+      }
     }
   }
 }

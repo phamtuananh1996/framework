@@ -62,7 +62,7 @@ class GroupCategoryController extends ApiController
         $groupcategory->update([
             'name'=>$request->name,
         ]);
-        return $this->response($cagroupcategorytegory);
+        return $this->response($groupcategory);
     }
 
     /**

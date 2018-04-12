@@ -61,7 +61,7 @@
 
                         <h1>
                             <a href="http://happylive.vn">
-                                <img src="./theme.hstatic.net/1000177652/1000229231/14/logo.png?v=90" alt="Happylive" class="img-responsive logoimg" />
+                                <img src="/theme.hstatic.net/1000177652/1000229231/14/logo.png?v=90" alt="Happylive" class="img-responsive logoimg" />
                             </a>
                         </h1>
 
@@ -113,7 +113,7 @@
                                 <tr>
                                     <td class="img">
                                         <a href="/products/dong-ho-nam-skmei-kim-xanh-duong">
-                                            <img src="./product.hstatic.net/1000177652/product/1_e0ed7c0240734782a8268793dce0b9b8_small.jpg " alt="ĐỒNG HỒ NAM SKMEI KIM XANH DƯƠNG"
+                                            <img src="/product.hstatic.net/1000177652/product/1_e0ed7c0240734782a8268793dce0b9b8_small.jpg " alt="ĐỒNG HỒ NAM SKMEI KIM XANH DƯƠNG"
                                             />
                                         </a>
                                     </td>
@@ -134,7 +134,7 @@
                                 <tr>
                                     <td class="img">
                                         <a href="/products/dong-ho-nam-tevise-1952-chay-co-cuc-chat">
-                                            <img src="./product.hstatic.net/1000177652/product/7_0590d26379fb4da3ba8d9b57564ee6b0_small.jpg " alt="ĐỒNG HỒ NAM TEVISE 1952 CHẠY CƠ CỰC CHẤT"
+                                            <img src="/product.hstatic.net/1000177652/product/7_0590d26379fb4da3ba8d9b57564ee6b0_small.jpg " alt="ĐỒNG HỒ NAM TEVISE 1952 CHẠY CƠ CỰC CHẤT"
                                             />
                                         </a>
                                     </td>

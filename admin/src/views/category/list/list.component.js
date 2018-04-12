@@ -1,4 +1,5 @@
 import Create from '../create/index'
+import CreateCategory from '../create-category'
 import Edit from '../edit/index'
 import {HTTP} from '../../../Helper'
 import swal from 'sweetalert'
@@ -6,13 +7,14 @@ export default {
   name: 'list',
   components: {
     create: Create,
-    edit: Edit
+    edit: Edit,
+    createCategory: CreateCategory
   },
   props: [],
   data () {
     return {
-      category: {},
-      errors: {}
+      groupCategory: 'groupCategory',
+      category: 'category'
     }
   },
   computed: {
@@ -55,19 +57,32 @@ export default {
         }
       })
     },
-    create (index) {
-      HTTP.post('/categories', this.category).then(res => {
+    edit (index, indexGroup, category) {
+      HTTP.get('/categories/' + category.id).then(res => {
         if (res.status === 200) {
-          var category = res.data
-          this.$store.commit('createCategory', {index, category})
-          this.category = {}
-          this.errors = {}
-        }
-      }).catch(err => {
-        if (err.response.status === 422) {
-          this.errors = err.response.data.errors
+          this.$store.commit('selectItem', res.data)
         }
       })
+    },
+    destroy (index, indexGroup, category) {
+      swal({
+        title: 'Are you sure?',
+        text: 'Once deleted, you will not be able to recover this imaginary file!',
+        icon: 'warning',
+        buttons: true,
+        dangerMode: true
+      })
+        .then((willDelete) => {
+          if (willDelete) {
+            HTTP.delete('/categories/' + category.id).then(res => {
+              if (res.status === 200) {
+                this.$store.commit('destroyCategory', {index, indexGroup})
+              }
+            })
+          } else {
+            swal('Your imaginary file is safe!')
+          }
+        })
     }
   }
 }

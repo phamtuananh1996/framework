@@ -4,7 +4,7 @@
             <ul class="slides">
                 <li>
                     <a href="/collections/dong-ho-nam-rolex" class="hrv-url">
-                        <img class="img-responsive" src="./theme.hstatic.net/1000177652/1000229231/14/slideshow_1.jpg?v=90" alt="Thời trang nam"
+                        <img class="img-responsive" src="/theme.hstatic.net/1000177652/1000229231/14/slideshow_1.jpg?v=90" alt="Thời trang nam"
                         />
                     </a>
                     <div id="hrv-banner-caption1" class="hrv-caption hrv-banner-caption">
@@ -21,7 +21,7 @@
                 </li>
                 <li>
                     <a href="/collections/dong-ho-nam-tissot" class="hrv-url">
-                        <img class="img-responsive" src="./theme.hstatic.net/1000177652/1000229231/14/slideshow_2.jpg?v=90" alt="" />
+                        <img class="img-responsive" src="/theme.hstatic.net/1000177652/1000229231/14/slideshow_2.jpg?v=90" alt="" />
                     </a>
                     <div id="hrv-banner-caption2" class="hrv-caption hrv-banner-caption">
                         <div class="container">
@@ -37,7 +37,7 @@
                 </li>
                 <li>
                     <a href="/collections/cap-dong-ho-tinh-yeu" class="hrv-url">
-                        <img class="img-responsive" src="./theme.hstatic.net/1000177652/1000229231/14/slideshow_3.jpg?v=90" alt="" />
+                        <img class="img-responsive" src="/theme.hstatic.net/1000177652/1000229231/14/slideshow_3.jpg?v=90" alt="" />
                     </a>
                     <div id="hrv-banner-caption3" class="hrv-caption hrv-banner-caption">
                         <div class="container">
