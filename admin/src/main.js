@@ -21,15 +21,6 @@ router.beforeEach((to, from, next) => {
         query: { redirect: to.fullPath }
       })
     } else {
-      // HTTP.get('/getuser').then(res => {
-      //   next()
-      // }).catch(e => {
-      //   console.log(e)
-      //   next({
-      //     path: '/login',
-      //     query: { redirect: to.fullPath }
-      //   })
-      // })
       next()
     }
   } else {

@@ -3,7 +3,7 @@
     <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
       <div class="card border-primary" v-for="(group,indexGroup) in groupCategories">
         <div class="card-header">
-          <div>{{group.name}} <a href="#" v-b-modal.groupCategory @click="editGroup(indexGroup,group)">&nbsp;&nbsp;<i class="fa fa-edit"></i></a> <a href="#" class="pull-right" @click="destroyGroup(index,group)">x</a></div>
+          <div>{{group.name}} <a href="#" v-b-modal.groupCategory @click="editGroup(indexGroup,group)">&nbsp;&nbsp;<i class="fa fa-edit"></i></a> <a href="#" class="pull-right" @click="destroyGroup(indexGroup,group)">x</a></div>
         </div>
         <div class="card-body">
          <table class="table table-hover">
