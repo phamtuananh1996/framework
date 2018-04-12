@@ -17,6 +17,7 @@ Route::post('/login','AuthController@login');
 Route::get('/getuser','AuthController@getUserLogin');
 Route::resource('users', 'Users\UserController');
 Route::resource('products', 'Admin\Products\ProductController');
+Route::resource('groupcategories', 'Admin\GroupCategories\GroupCategoryController');
 Route::resource('categories', 'Admin\Categories\CategoryController');
 Route::resource('news', 'Admin\News\NewsController');
 Route::resource('slides', 'Admin\Slides\SlideController');

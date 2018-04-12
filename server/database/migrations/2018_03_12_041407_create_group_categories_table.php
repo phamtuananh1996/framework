@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class User extends Migration
+class CreateGroupCategoriesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,18 +13,11 @@ class User extends Migration
      */
     public function up()
     {
-        Schema::create('news', function (Blueprint $table) {
+        Schema::create('group_categories', function (Blueprint $table) {
             $table->increments('id');
-           
             $table->string('name');
-            $table->string('email');
-            $table->string('avatar');
-            $table->string('password');
-            $table->string('phone');
-            $table->string('address');
-            $table->string('remember_token');
-           
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
@@ -35,6 +28,6 @@ class User extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('group_categories');
     }
 }

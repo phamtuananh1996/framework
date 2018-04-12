@@ -10,7 +10,7 @@ class SpController extends Controller
     public function getAllSp()
     {
         $sp=Product::all();
-        return view("index",compact('sp'));
+        return view("home",compact('sp'));
     }
 
     public function GetSp($id)

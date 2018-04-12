@@ -1,5 +1,5 @@
 export default {
-  category: [],
+  groupCategory: [],
   select: {
     parent_id: 0
   }

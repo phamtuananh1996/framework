@@ -6,7 +6,7 @@ import App from './App'
 import router from './router'
 import store from './store/store'
 import VueDragAndDropList from 'vue-drag-and-drop-list'
-import {HTTP} from './Helper'
+// import {HTTP} from './Helper'
 
 Vue.use(VueDragAndDropList)
 Vue.use(BootstrapVue)

@@ -14,19 +14,19 @@ export default {
     }
   },
   computed: {
-    categories () {
-      return this.$store.state.Category.category
+    groupCategories () {
+      return this.$store.state.Category.groupCategory
     }
   },
   mounted () {
-    HTTP.get('/categories').then(res => {
+    HTTP.get('/groupcategories').then(res => {
       if (res.status === 200) {
         this.$store.commit('fetch', res.data)
       }
     })
   },
   methods: {
-    destroy (index, category) {
+    destroyGroup (index, groupCategory) {
       swal({
         title: 'Are you sure?',
         text: 'Once deleted, you will not be able to recover this imaginary file!',
@@ -36,7 +36,7 @@ export default {
       })
         .then((willDelete) => {
           if (willDelete) {
-            HTTP.delete('/categories/' + category.id).then(res => {
+            HTTP.delete('/groupcategories/' + groupCategory.id).then(res => {
               if (res.status === 200) {
                 this.$store.commit('destroy', index)
               }
@@ -46,8 +46,8 @@ export default {
           }
         })
     },
-    edit (index, category) {
-      HTTP.get('/categories/' + category.id).then(res => {
+    editGroup (index, groupCategory) {
+      HTTP.get('/groupcategories/' + groupCategory.id).then(res => {
         if (res.status === 200) {
           this.$store.commit('selectItem', res.data)
         }

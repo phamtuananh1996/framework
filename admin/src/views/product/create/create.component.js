@@ -20,7 +20,7 @@ export default {
       },
       config: {
         toolbar: [
-          [ 'Bold', 'Italic', 'Underline', 'Strike', 'Subscript', 'Superscript' ]
+          [ 'Bold', 'Italic', 'Underline', 'Strike', 'Subscript', 'Superscript', 'Table', 'TextColor', 'BGColor', 'Styles', 'Format', 'Font', 'FontSize' ]
         ],
         height: 300
       },

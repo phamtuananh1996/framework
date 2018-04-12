@@ -6,9 +6,7 @@ export default {
   data () {
     return {
       errors: {},
-      category: {
-        parent_id: 0
-      }
+      groupCategory: {}
     }
   },
   computed: {
@@ -17,10 +15,10 @@ export default {
   },
   methods: {
     create () {
-      HTTP.post('/categories', this.category).then(res => {
+      HTTP.post('/groupcategories', this.groupCategory).then(res => {
         if (res.status === 200) {
           this.$store.commit('create', res.data)
-          this.category = {}
+          this.groupCategory = {}
           this.errors = {}
         }
       }).catch(err => {

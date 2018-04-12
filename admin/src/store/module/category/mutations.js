@@ -1,24 +1,24 @@
 export default {
-  create (state, category) {
-    state.category.push(category)
+  create (state, groupCategory) {
+    state.groupCategory.push(groupCategory)
   },
 
-  fetch (state, categories) {
-    state.category = categories
+  fetch (state, groupCategory) {
+    state.groupCategory = groupCategory
   },
 
   destroy (state, index) {
-    state.category.splice(index, 1)
+    state.groupCategory.splice(index, 1)
   },
 
-  selectItem (state, category) {
-    state.select = category
+  selectItem (state, groupCategory) {
+    state.select = groupCategory
   },
 
-  editCategory (state, category) {
-    state.category.forEach(element => {
-      if (element.id === category.id) {
-        element.name = category.name
+  editCategory (state, groupCategory) {
+    state.groupCategory.forEach(element => {
+      if (element.id === groupCategory.id) {
+        element.name = groupCategory.name
       }
     })
   }
