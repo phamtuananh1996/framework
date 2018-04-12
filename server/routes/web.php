@@ -17,5 +17,7 @@ Route::get('/','SPController@getAllSp');
  Route::get('/register','UserController@ViewRegister');
  Route::Post('/login','UserController@Login');
  Route::Post('/register','UserController@Register');
+ Route::Get('/tintuc','TTController@DsTinTuc');
+ Route::Get('/baiviet/{id}','TTController@BaiVet');
  Route::get('/chitiet/{id}','SpController@GetSp');
 
