@@ -15,6 +15,7 @@ class TTController extends Controller
 
     public function BaiViet($id)
     {
-        return view("chitietbaiviet");
+        $bv=News::find($id);
+        return view("chitietbaiviet",compact("bv"));
     }
 }

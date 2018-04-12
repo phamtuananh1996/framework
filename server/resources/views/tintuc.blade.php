@@ -34,7 +34,7 @@
 										<li><i class="fa fa-file-text-o"></i><a href="baiviet/{{$item['id']}}"> Tin tức	</a> </li>
 											
 									</ul>
-									<p>{{$item['content']}}</p>
+									<p>{!! substr($item['content'],300,300) !!}</p>
 								</div>
 								<!-- End: Nội dung bài viết -->	
 								<a class="readmore btn-rb clear-fix" href="baiviet/{{$item['id']}}" role="button">Xem tiếp <span class="fa fa-angle-double-right"></span></a>

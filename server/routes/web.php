@@ -11,13 +11,13 @@
 |
 */
 
-Route::get('/','SPController@getAllSp');
+ Route::get('/','SPController@getAllSp');
  Route::get('/login','UserController@ViewLogin');
  Route::get('/logout','UserController@Logout');
  Route::get('/register','UserController@ViewRegister');
  Route::Post('/login','UserController@Login');
  Route::Post('/register','UserController@Register');
  Route::Get('/tintuc','TTController@DsTinTuc');
- Route::Get('/baiviet/{id}','TTController@BaiVet');
+ Route::Get('/baiviet/{id}','TTController@BaiViet');
  Route::get('/chitiet/{id}','SpController@GetSp');
 
