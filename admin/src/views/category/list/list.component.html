@@ -1,9 +1,9 @@
 <div class="animated fadeIn">
   <div class="row">
     <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
-      <div class="card border-primary" v-b-modal.edit v-for="(group,index) in groupCategories">
+      <div class="card border-primary" v-for="(group,indexGroup) in groupCategories">
         <div class="card-header">
-          <div>{{group.name}} <a href="#" @click="editGroup(index,group)">&nbsp;&nbsp;<i class="fa fa-edit"></i></a> <a href="#" class="pull-right" @click="destroyGroup(index,group)">x</a></div>
+          <div>{{group.name}} <a href="#" v-b-modal.groupCategory @click="editGroup(indexGroup,group)">&nbsp;&nbsp;<i class="fa fa-edit"></i></a> <a href="#" class="pull-right" @click="destroyGroup(index,group)">x</a></div>
         </div>
         <div class="card-body">
          <table class="table table-hover">
@@ -15,19 +15,17 @@
              </tr>
            </thead>
            <tbody>
-             <tr v-for="(category,index) in group.category">
+             <tr v-for="(category,index) in group.categories">
                <td>{{index+1}}</td>
                <td>{{category.name}}</td>
                <td>
-                 <button type="button" class="btn btn-danger btn-sm" @click="destroy(index,group)"><i class="fa fa-times"></i></button>
-                 <b-btn v-b-modal.edit class="btn btn-warning btn-sm"  @click="edit(index,group)"><i class="fa fa-edit"></i></b-btn>
+                 <button type="button" class="btn btn-danger btn-sm" @click="destroy(index,indexGroup,category)"><i class="fa fa-times"></i></button>
+                 <b-btn v-b-modal.category class="btn btn-warning btn-sm"  @click="edit(index,indexGroup,category)"><i class="fa fa-edit"></i></b-btn>
                </td>
              </tr>
            </tbody>
          </table>
-        </div>
-        <div class="card-footer">
-          <button type="button" class="btn btn-primary btn-sm pull-right">Thêm</button>
+         <create-category :index="indexGroup" :groupcategory="group"></create-category>
         </div>
       </div>
     </div>
@@ -43,6 +41,7 @@
     </div>
   </div>
   <div>
-    <edit></edit>
+    <edit :type="groupCategory"></edit>
+    <edit :type="category"></edit>
   </div>
 </div>

@@ -1,7 +1,7 @@
 <form v-on:submit.prevent="create">
   <div class="form-group">
     <label for="">Name</label>
-    <input v-model='groupCategory.name' type="text" class="form-control" id="" placeholder="Name category">
+    <input v-model='groupCategory.name' type="text" class="form-control" id="" placeholder="Name Group category">
     <label for="name" style="color: red" v-if="errors.name">{{errors.name?errors.name[0]:''}}</label>
   </div>
   <button type="submit" class="btn btn-primary pull-right btn-sm">Thêm</button>
