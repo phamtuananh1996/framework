@@ -19,7 +19,7 @@
                             <div class="news-content">
 							<div class="col-md-5 col-xs-12 col-sm-12 img-article">
 								<div class="art-img">
-									<img src="/file.hstatic.net/1000177652/article/bao-duong-dong-ho-deo-tay-3_large.jpg" alt="" >
+									<img src="{{$item['image']}}" alt="" >
 								</div>
 							</div>
 							

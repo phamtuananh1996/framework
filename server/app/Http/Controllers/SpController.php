@@ -4,13 +4,18 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Product;
+use App\Models\Category;
+use App\Models\GroupCategory;
 
 class SpController extends Controller
 {
     public function getAllSp()
     {
         $sp=Product::all();
-        return view("home",compact('sp'));
+        
+        $menu=GroupCategory::all();
+        $menucon=Category::all();
+        return view("home",compact('sp','menu','menucon'));
     }
 
     public function GetSp($id)

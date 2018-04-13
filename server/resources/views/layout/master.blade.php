@@ -211,7 +211,7 @@
 				<div id="pageContainer" class="clearfix">
 					@include('layout.header')
 					@include('layout.menu')
-					<!-- @include('layout.slide') -->
+					 @include('layout.slide') 
 				</div>
 					<section id="content" class="clearfix container">
 						<div class="row">
