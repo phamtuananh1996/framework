@@ -29,48 +29,7 @@
 				<div class="col-md-3 col-sm-12 col-xs-12  leftsidebar-col" data-sticky_column="" style="width: 293px; bottom: auto; right: auto; position: absolute; top: 0px; left: 0px;">
 					<div class="group_sidebar">
 
-						<div class="list-group navbar-inner ">
-
-
-							<div class="mega-left-title btn-navbar title-hidden-sm">
-								<h3 class="sb-title">Danh mục </h3>
-							</div>
-
-							<ul class="nav navs sidebar menu" id="cssmenu">
-
-
-
-
-								<li class="item  first">
-									<a href="/collections/onsale">
-										<span>Sản phẩm khuyến mãi</span>
-									</a>
-								</li>
-
-
-
-
-
-								<li class="item  ">
-									<a href="/collections/hot-products">
-										<span>Sản phẩm nổi bật</span>
-									</a>
-								</li>
-
-
-
-
-
-								<li class="item  last">
-									<a href="/collections/all">
-										<span>Tất cả sản phẩm</span>
-									</a>
-								</li>
-
-
-							</ul>
-
-						</div>
+						@include("layout.danhmuc")
 
 						<!-- Banner quảng cáo -->
 						<div class="list-group_l banner-left hidden-sm hidden-xs">

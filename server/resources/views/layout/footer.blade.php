@@ -36,24 +36,24 @@
                                     <a href="/">Trang chủ</a>
                                 </li>
 
+                                  @foreach($menuc as $item)
+                    <li class="item  first">
+												<a href="categoris/{{$item['id']}}">
+													<span>{{$item['name']}}</span>
+												</a>
+											</li>
+                    @endforeach
+
                                 <li>
-                                    <a href="/collections/dong-ho-nam">Đồng hồ nam</a>
+                                    <a href="/dichvu">Dịch vụ</a>
                                 </li>
 
                                 <li>
-                                    <a href="/collections/dong-ho-nu">Đồng hồ nữ</a>
+                                    <a href="/gioithieu">Giới thiệu</a>
                                 </li>
 
                                 <li>
-                                    <a href="/pages/dich-vu">Dịch vụ</a>
-                                </li>
-
-                                <li>
-                                    <a href="/pages/gioi-thieu">Giới thiệu</a>
-                                </li>
-
-                                <li>
-                                    <a href="/blogs/news">Blog</a>
+                                    <a href="/news">Blog</a>
                                 </li>
 
                             </ul>

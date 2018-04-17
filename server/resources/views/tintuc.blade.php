@@ -26,37 +26,7 @@
 					<div class="wrapper-sticky" style="display: block; height: 403px; width: 25%; margin: auto; position: relative; float: left; left: auto; right: auto; top: auto; bottom: auto; vertical-align: top;">
 						<div class="col-md-3  col-sm-12 col-xs-12 leftsidebar-col" data-sticky_column="" style="width: 293px; top: auto; bottom: auto; right: auto; left: 0px;">
 							<!-- Begin sidebar blog -->
-							<div class="sidebar ">
-								<div class="group_sidebar">
-									<div class="list-group navbar-inner ">
-										<div>
-											<h3 class="sb-title">Danh mục blog</h3>
-										</div>
-										<ul class="nav navs sidebar menu" id="menu-blog">
-											<li class="item  first">
-												<a href="/collections/dong-ho-nam-2">
-													<span>Đồng hồ nam</span>
-												</a>
-											</li>
-											<li class="item  ">
-												<a href="/collections/dong-ho-nu">
-													<span>Đồng hồ nữ</span>
-												</a>
-											</li>
-											<li class="item  ">
-												<a href="/collections/dong-ho-tre-em">
-													<span>Đồng hồ trẻ em</span>
-												</a>
-											</li>
-											<li class="item  last">
-												<a href="/collections/phu-kien-dong-ho">
-													<span>Phụ kiện đồng hồ</span>
-												</a>
-											</li>
-										</ul>
-									</div>
-								</div>
-							</div>
+							@include("layout.danhmuc");
 							<!-- End sidebar blog -->
 						</div>
 					</div>

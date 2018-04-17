@@ -12,7 +12,7 @@ class SpController extends Controller
     public function getAllSp(Request $request)
     {
         $groupCategorys=GroupCategory::with('products')->get();
-        
+
         return view("home",compact('groupCategorys'));
     }
 
@@ -27,5 +27,14 @@ class SpController extends Controller
     {
         $product = Product::find($id);
         return response()->json($product);
+    }
+
+    public function DichVu()
+    {
+        return view("dichvu");
+    }
+    public function GioiThieu()
+    {
+        return view("gioithieu");
     }
 }
