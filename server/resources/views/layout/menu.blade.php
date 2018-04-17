@@ -54,61 +54,23 @@
             </div>
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav clearfix">
-                    <li>
-                        <a href="/" class=" current" title="Trang chủ">
-                            <span>Trang chủ</span>
-                        </a>
-                    </li>
+
+                    @foreach($menu as $key => $item)
                     <li class="dropdown">
-                        <a href="/collections/dong-ho-nam" title="Đồng hồ nam" class="">
-                            <span>Đồng hồ nam</span>
+                        <a href="{{$item['name']}}" title="{{$item['name']}}" class="">
+                            <span> {{$item['name']}} </span>
                         </a>
-                        <ul class="dropdown-menu" role="menu">
-                            <li>
-                                <a href="/collections/dong-ho-nam-tevise" title="Đồng hồ Tevise">Đồng hồ Tevise</a>
-                            </li>
-                            <li>
-                                <a href="/collections/dong-ho-nam-skmei" title="Đồng hồ Skmei">Đồng hồ Skmei</a>
-                            </li>
-                            <li>
-                                <a href="/collections/dong-ho-nam-halei" title="Đồng hồ Halei">Đồng hồ Halei</a>
-                            </li>
-                            <li>
-                                <a href="/collections/dong-ho-nam-longbo" title="Đồng hồ Longbo">Đồng hồ Longbo</a>
-                            </li>
-                            <li>
-                                <a href="/collections/dong-ho-nam-curren" title="Đồng hồ nam Curren">Đồng hồ nam Curren</a>
-                            </li>
-                            <li>
-                                <a href="/collections/dong-ho-nam-baishuns" title="Đồng hồ nam Baishuns">Đồng hồ nam Baishuns</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="dropdown">
-                        <a href="/collections/dong-ho-nu" title="Đồng hồ nữ" class="">
-                            <span>Đồng hồ nữ</span>
-                        </a>
-                        <ul class="dropdown-menu" role="menu">
-                            <li>
-                                <a href="/collections/dong-ho-nu-beesister" title="Đồng hồ Beesister">Đồng hồ Beesister</a>
-                            </li>
-                            <li>
-                                <a href="/collections/dong-ho-nu-skmei" title="Đồng hồ Skmei">Đồng hồ Skmei</a>
-                            </li>
-                            <li>
-                                <a href="/collections/dong-ho-nu-halei" title="Đồng hồ Halei">Đồng hồ Halei</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="/pages/dich-vu" class="" title="Dịch vụ">
-                            <span>Dịch vụ</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="/pages/gioi-thieu" class="" title="Giới thiệu">
-                            <span>Giới thiệu</span>
-                        </a>
+                        
+                      <ul class="dropdown-menu" role="menu"> 
+                            @foreach($menucon as $itemcon)  
+                            @if($itemcon['parent_id']==$item['id'])
+                           
+						<li>
+							<a href="/{{$item['name']}}/{{$itemcon['name']}}" title="{{$itemcon['name']}}">{{$itemcon['name']}}</a>
+						</li>
+                        @endif
+                            @endforeach 
+                             </ul>
                     </li>
                     <li>
                         <a href="/tintuc" class="" title="Blog">
