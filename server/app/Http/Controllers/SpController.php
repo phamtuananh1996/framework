@@ -12,6 +12,7 @@ class SpController extends Controller
     public function getAllSp(Request $request)
     {
         $groupCategorys=GroupCategory::with('products')->get();
+        
         return view("home",compact('groupCategorys'));
     }
 

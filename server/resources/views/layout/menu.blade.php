@@ -61,15 +61,15 @@
                         </a>
                     </li>
 
-                    @if(session("menu") && session("menucon"))
-                    $menu=session("menu");$menucon=session("menucon");
-                    @foreach($menu as $item)
+                  
+                    @foreach($menuc as $item)
                     <li class="dropdown">
                         <a href="{{$item['name']}}" title="{{$item['name']}}" class="">
                             <span>{{$item['name']}}</span>
                         </a><ul class="dropdown-menu" role="menu">
-                    @foreach($menucon as $item1)
-                    
+                             @foreach($item->categories as $item1)
+
+
                         
                             <li>
                                 <a href="{{$item1['name']}}" title="{{$item1['name']}}">{{$item1['name']}}</a>
@@ -77,11 +77,11 @@
                             
                         
                    
-                    @endforeach
+                             @endforeach
                     </ul></li>
                     @endforeach
                     
-                   @endif
+               
                     <li>
                         <a href="/pages/dich-vu" class="" title="Dịch vụ">
                             <span>Dịch vụ</span>
