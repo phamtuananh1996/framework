@@ -43,4 +43,12 @@ class CartController extends Controller
         Cart::remove($rowId);
         return view('modal.cart');
     }
+
+    public function update(Request $request)
+    {
+        if($request->has('checkout'))
+        {
+            return redirect('/checkout');
+        }
+    }
 }

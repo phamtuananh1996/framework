@@ -11,6 +11,7 @@
             <h1>Giỏ hàng</h1>
           </span>
           <form action="/cart" method="post" id="cartformpage">
+            {{csrf_field()}}
             <table>
               <thead>
                 <tr>

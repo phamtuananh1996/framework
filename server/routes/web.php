@@ -27,6 +27,8 @@
  Route::get('/cart/ajax/delete/{id}','CartController@deleteAjaxCart');
  Route::get('/cart/delete/{rowId}','CartController@deleteCart');
  Route::get('/cart','CartController@getCart');
+ Route::post('/cart','CartController@update');
+ Route::get('/checkout','CheckoutController@index');
 
 
 Route::get('/groupcategory/{id}','GroupCategoryController@getProduct');
