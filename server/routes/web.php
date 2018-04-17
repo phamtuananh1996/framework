@@ -13,6 +13,11 @@
 
  Route::get('/','SPController@getAllSp');
  Route::get('/login','UserController@ViewLogin');
+ Route::get('/dichvu','SPController@DichVu');
+
+ Route::get('/categories','SPController@getAllSp');
+ Route::get('/categories/{id}','SPController@getSp');
+ Route::get('/gioithieu','SPController@GioiThieu');
  Route::get('/logout','UserController@Logout');
  Route::get('/register','UserController@ViewRegister');
  Route::Post('/login','UserController@Login');

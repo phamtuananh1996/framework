@@ -64,7 +64,7 @@
                   
                     @foreach($menuc as $item)
                     <li class="dropdown">
-                        <a href="{{$item['name']}}" title="{{$item['name']}}" class="">
+                        <a href="#" title="{{$item['name']}}" class="">
                             <span>{{$item['name']}}</span>
                         </a><ul class="dropdown-menu" role="menu">
                              @foreach($item->categories as $item1)
@@ -72,7 +72,7 @@
 
                         
                             <li>
-                                <a href="{{$item1['name']}}" title="{{$item1['name']}}">{{$item1['name']}}</a>
+                                <a href="#" title="{{$item1['name']}}">{{$item1['name']}}</a>
                             </li>
                             
                         
@@ -83,12 +83,12 @@
                     
                
                     <li>
-                        <a href="/pages/dich-vu" class="" title="Dịch vụ">
+                        <a href="/dichvu" class="" title="Dịch vụ">
                             <span>Dịch vụ</span>
                         </a>
                     </li>
                     <li>
-                        <a href="/pages/gioi-thieu" class="" title="Giới thiệu">
+                        <a href="/gioithieu" class="" title="Giới thiệu">
                             <span>Giới thiệu</span>
                         </a>
                     </li>
