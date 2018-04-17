@@ -55,7 +55,7 @@
             </div>
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav clearfix">
-
+                    
                     @foreach($menu as $key => $item)
                     <li class="dropdown">
                         <a href="{{$item['name']}}" title="{{$item['name']}}" class="">

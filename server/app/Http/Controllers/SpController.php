@@ -9,12 +9,13 @@ use App\Models\GroupCategory;
 
 class SpController extends Controller
 {
-    public function getAllSp()
+    public function getAllSp(Request $request)
     {
-        $sp=Product::all();
-        
+        $sp=Product::all();   
         $menu=GroupCategory::all();
         $menucon=Category::all();
+        $request->session()->put("menu",$menu);
+        $request->session()->put("menucon",$menucon);
         return view("home",compact('sp','menu','menucon'));
     }
 

@@ -19,7 +19,7 @@ class UserController extends Controller
     public function Login(Request $request)
     {
         $username =$request->username;
-        $password =$request->password;
+        $password =bcrypt($request->password);
         $tk=User::where('name',$username)->where('password',$password)->first();
         if($tk)
         {
@@ -39,7 +39,7 @@ class UserController extends Controller
     {
         $user=new User();
         $user->name=$request->username;
-        $user->password=$request->password;
+        $user->password=bcrypt($request->password);
         $user->email=$request->email;
         $kq=$user->save();
         if($kq)
