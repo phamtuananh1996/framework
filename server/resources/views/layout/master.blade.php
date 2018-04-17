@@ -39,7 +39,10 @@
             <div id="pageContainer" class="clearfix">
                 @include('layout.header')
                  @include('layout.menu')
-                <!-- @include('layout.slide') -->
+                 
+                 @if ($_SERVER['REQUEST_URI']=='/')
+                 @include('layout.slide')
+                 @endif
             </div>
             <section id="content" class="clearfix container">
                 <div class="row">

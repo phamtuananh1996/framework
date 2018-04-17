@@ -161,12 +161,12 @@
                                     <a href="#">
                                         <i class="fa fa-phone" aria-hidden="true"></i> 0978.828.888</a>
                                 </li>
-                                @if(session('user'))
+                                @if(Auth::check())
                                 <li>
-                                    <a class="log" href="#" title="account">Xin chào : {{ session('user') }} </a>
+                                    <a class="log" href="#" title="account">Xin chào : {{ Auth::user()->name}} </a>
                                 </li>
                                 <li>
-                                    <a class="log" href="logout" title="Đăng xuất">Đăng xuất</a>
+                                    <a class="log" href="/logout" title="Đăng xuất">Đăng xuất</a>
                                 </li>
                                 @else
                                 <li>

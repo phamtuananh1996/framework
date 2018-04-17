@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use Auth;
 
 class UserController extends Controller
 {
@@ -18,13 +19,10 @@ class UserController extends Controller
     }
     public function Login(Request $request)
     {
-        $username =$request->username;
+        $email =$request->email;
         $password =$request->password;
-        $tk=User::where('name',$username)->where('password',$password)->first();
-        if($tk)
-        {
-            $request->session()->put('user',$username);
-            return redirect("");
+        if (Auth::attempt(['email' => $email, 'password' => $password])) {
+            return redirect("/");
         }
         else{
             return redirect("login")->with(['err'=>"error"]);
@@ -32,24 +30,18 @@ class UserController extends Controller
     }
     public function Logout(Request $request)
     {
-        $request->session()->forget('user');
+        Auth::logout();
         return redirect("/");
     }
     public function Register(Request $request)
     {
         $user=new User();
-        $user->name=$request->username;
-        $user->password=$request->password;
+        $user->name=$request->firstname . $request->lastname;
+        $user->password=bcrypt($request->password);
         $user->email=$request->email;
-        $kq=$user->save();
-        if($kq)
-        {
-            $request->session()->put('user',$user->name);
-            return redirect("/");
-        }
-        else
-        {
-            return redirect("register")->with(['err'=>'error']);
-        }
+        $user->phone=$request->phone;
+        $user->address=$request->address;
+        $user->save();
+        return redirect("login")->with(['err'=>"error"]);
     }
 }

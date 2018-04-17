@@ -12,8 +12,9 @@ class GroupCategoryController extends Controller
     public function getProduct($id)
     {
         $groupCategory=GroupCategory::find($id);
+        $title=$groupCategory->name;
         $category_id=Category::where('parent_id',$id)->pluck('id')->all();
         $products=Product::whereIn('category_id',$category_id)->paginate(config('paginate.PAGE_PRODUCT'));
-        return view('listproduct',compact('products','groupCategory'));
+        return view('listproduct',compact('products','title'));
     }
 }
