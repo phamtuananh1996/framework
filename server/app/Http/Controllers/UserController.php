@@ -23,6 +23,7 @@ class UserController extends Controller
         $password =$request->password;
         if (Auth::attempt(['email' => $email, 'password' => $password])) {
             return redirect("/");
+
         }
         else{
             return redirect("login")->with(['err'=>"error"]);

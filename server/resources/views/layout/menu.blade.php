@@ -60,47 +60,28 @@
                             <span>Trang chủ</span>
                         </a>
                     </li>
+
+                  
+                    @foreach($menuc as $item)
                     <li class="dropdown">
-                        <a href="/collections/dong-ho-nam" title="Đồng hồ nam" class="">
-                            <span>Đồng hồ nam</span>
-                        </a>
-                        <ul class="dropdown-menu" role="menu">
+                        <a href="{{$item['name']}}" title="{{$item['name']}}" class="">
+                            <span>{{$item['name']}}</span>
+                        </a><ul class="dropdown-menu" role="menu">
+                             @foreach($item->categories as $item1)
+
+
+                        
                             <li>
-                                <a href="/collections/dong-ho-nam-tevise" title="Đồng hồ Tevise">Đồng hồ Tevise</a>
+                                <a href="{{$item1['name']}}" title="{{$item1['name']}}">{{$item1['name']}}</a>
                             </li>
-                            <li>
-                                <a href="/collections/dong-ho-nam-skmei" title="Đồng hồ Skmei">Đồng hồ Skmei</a>
-                            </li>
-                            <li>
-                                <a href="/collections/dong-ho-nam-halei" title="Đồng hồ Halei">Đồng hồ Halei</a>
-                            </li>
-                            <li>
-                                <a href="/collections/dong-ho-nam-longbo" title="Đồng hồ Longbo">Đồng hồ Longbo</a>
-                            </li>
-                            <li>
-                                <a href="/collections/dong-ho-nam-curren" title="Đồng hồ nam Curren">Đồng hồ nam Curren</a>
-                            </li>
-                            <li>
-                                <a href="/collections/dong-ho-nam-baishuns" title="Đồng hồ nam Baishuns">Đồng hồ nam Baishuns</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="dropdown">
-                        <a href="/collections/dong-ho-nu" title="Đồng hồ nữ" class="">
-                            <span>Đồng hồ nữ</span>
-                        </a>
-                        <ul class="dropdown-menu" role="menu">
-                            <li>
-                                <a href="/collections/dong-ho-nu-beesister" title="Đồng hồ Beesister">Đồng hồ Beesister</a>
-                            </li>
-                            <li>
-                                <a href="/collections/dong-ho-nu-skmei" title="Đồng hồ Skmei">Đồng hồ Skmei</a>
-                            </li>
-                            <li>
-                                <a href="/collections/dong-ho-nu-halei" title="Đồng hồ Halei">Đồng hồ Halei</a>
-                            </li>
-                        </ul>
-                    </li>
+                            
+                        
+                   
+                             @endforeach
+                    </ul></li>
+                    @endforeach
+                    
+               
                     <li>
                         <a href="/pages/dich-vu" class="" title="Dịch vụ">
                             <span>Dịch vụ</span>
