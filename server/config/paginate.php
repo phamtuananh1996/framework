@@ -1,6 +1,6 @@
 <?php 
     return [
-        "PAGE_USER"=>10,
-        "PAGE_PRODUCT"=>10,
-        "PAGE_NEWS"=>10
+        "PAGE_USER"=>20,
+        "PAGE_PRODUCT"=>20,
+        "PAGE_NEWS"=>20
     ];

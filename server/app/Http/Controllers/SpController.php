@@ -4,19 +4,26 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Product;
+use App\Models\GroupCategory;
 
 class SpController extends Controller
 {
     public function getAllSp()
     {
-        $sp=Product::all();
-        return view("home",compact('sp'));
+        $groupCategorys=GroupCategory::with('products')->get();
+        return view("home",compact('groupCategorys'));
     }
 
     public function GetSp($id)
     {
-        $spct=Product::find($id);
+        $product=Product::find($id);
         $dsspht=Product::limit(4)->get();
-        return view("chitietsp",compact('spct'),compact('dsspht'));
+        return view("chitietsp",compact('product'));
+    }
+
+    public function getProductApi($id)
+    {
+        $product = Product::find($id);
+        return response()->json($product);
     }
 }

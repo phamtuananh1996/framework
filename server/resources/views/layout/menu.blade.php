@@ -6,7 +6,7 @@
                 <div class="mobile-menu-icon-wrapper">
                     <div class="menu-logo">
                         <h1 class="logo logo-mobile">
-                            <a href="http://happylive.vn">
+                            <a href="/">
                                 <img src="/theme.hstatic.net/1000177652/1000229231/14/logo.png?v=90" alt="Happylive" class="img-responsive logoimg" />
                             </a>
                         </h1>
@@ -112,8 +112,8 @@
                         </a>
                     </li>
                     <li>
-                        <a href="/blogs/news" class="" title="Blog">
-                            <span>Blog</span>
+                        <a href="/tintuc" class="" title="Blog">
+                            <span>TIn tức</span>
                         </a>
                     </li>
                 </ul>

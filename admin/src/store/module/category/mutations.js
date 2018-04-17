@@ -23,10 +23,10 @@ export default {
     })
   },
   createCategory (state, data) {
-    if (state.groupCategory[data.index].categories === undefined) {
+    if (state.groupCategory[data.index].categories !== undefined) {
       state.groupCategory[data.index].categories.push(data.category)
     } else {
-      state.groupCategory[data.index].categories = data.category
+      state.groupCategory[data.index].categories = [data.category]
     }
   },
   destroyCategory (state, data) {
