@@ -24,4 +24,13 @@ class Product extends Model
     {
         return env('APP_URL').$this->image;
     }
+
+    public function getImageMoreAttribute($image_more)
+    {
+        if($image_more=='null')
+        {
+            return false;
+        }
+        return json_decode($image_more);
+    }
 }

@@ -12,4 +12,9 @@ class GroupCategory extends Model
     {
         return $this->hasMany('App\Models\Category','parent_id','id');
     }
+
+    public function products()
+    {
+        return $this->hasManyThrough('App\Models\Product', 'App\Models\Category','parent_id');
+    }
 }

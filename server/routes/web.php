@@ -19,5 +19,16 @@
  Route::Post('/register','UserController@Register');
  Route::Get('/tintuc','TTController@DsTinTuc');
  Route::Get('/baiviet/{id}','TTController@BaiViet');
- Route::get('/chitiet/{id}','SpController@GetSp');
+ Route::get('/chitietsanpham/{id}','SpController@GetSp');
+ Route::get('/api_get_product/{id}','SpController@getProductApi');
+
+ Route::get('/cart/add/{id}','CartController@addCart');
+ Route::get('/cart/ajax/add/{id}','CartController@addAjaxCart');
+ Route::get('/cart/ajax/delete/{id}','CartController@deleteAjaxCart');
+ Route::get('/cart/delete/{rowId}','CartController@deleteCart');
+ Route::get('/cart','CartController@getCart');
+
+
+Route::get('/groupcategory/{id}','GroupCategoryController@getProduct');
+Route::get('/search','SearchController@search');
 

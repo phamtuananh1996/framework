@@ -10,4 +10,12 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
+
+    public function __construct(Request $request) {
+        $menucon=Category::all();
+        $menu=GroupCategory::all();
+        $request->session()->put("menu",$menu);
+        $request->session()->put("menucon",$menucon);
+        
+    }
 }

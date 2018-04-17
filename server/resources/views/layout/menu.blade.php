@@ -6,7 +6,7 @@
                 <div class="mobile-menu-icon-wrapper">
                     <div class="menu-logo">
                         <h1 class="logo logo-mobile">
-                            <a href="http://happylive.vn">
+                            <a href="/">
                                 <img src="/theme.hstatic.net/1000177652/1000229231/14/logo.png?v=90" alt="Happylive" class="img-responsive logoimg" />
                             </a>
                         </h1>
@@ -55,27 +55,49 @@
             </div>
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav clearfix">
-                    
-                    @foreach($menu as $key => $item)
+                    <li>
+                        <a href="/" class=" current" title="Trang chủ">
+                            <span>Trang chủ</span>
+                        </a>
+                    </li>
+
+                    @if(session("menu") && session("menucon"))
+                    $menu=session("menu");$menucon=session("menucon");
+                    @foreach($menu as $item)
                     <li class="dropdown">
                         <a href="{{$item['name']}}" title="{{$item['name']}}" class="">
-                            <span> {{$item['name']}} </span>
-                        </a>
+                            <span>{{$item['name']}}</span>
+                        </a><ul class="dropdown-menu" role="menu">
+                    @foreach($menucon as $item1)
+                    
                         
-                      <ul class="dropdown-menu" role="menu"> 
-                            @foreach($menucon as $itemcon)  
-                            @if($itemcon['parent_id']==$item['id'])
-                           
-						<li>
-							<a href="/{{$item['name']}}/{{$itemcon['name']}}" title="{{$itemcon['name']}}">{{$itemcon['name']}}</a>
-						</li>
-                        @endif
-                            @endforeach 
-                             </ul>
-                    </li>
+                            <li>
+                                <a href="{{$item1['name']}}" title="{{$item1['name']}}">{{$item1['name']}}</a>
+                            </li>
+                            
+                        
+                   
                     @endforeach
-
-                  
+                    </ul></li>
+                    @endforeach
+                    
+                   @endif
+                    <li>
+                        <a href="/pages/dich-vu" class="" title="Dịch vụ">
+                            <span>Dịch vụ</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/pages/gioi-thieu" class="" title="Giới thiệu">
+                            <span>Giới thiệu</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/tintuc" class="" title="Blog">
+                            <span>TIn tức</span>
+                        </a>
+                    </li>
+                </ul>
             </div>
             <div class="hidden-xs pull-right right-menu">
                 <ul class="nav navbar-nav pull-right">
