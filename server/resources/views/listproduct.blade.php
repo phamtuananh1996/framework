@@ -16,7 +16,7 @@
 
 
           <li class="active">
-            <span> {{$groupCategory->name}}</span>
+            <span> {{$title}}</span>
           </li>
 
 
@@ -36,7 +36,7 @@
       <div class="col-lg-12 visible-sm visible-xs">
         <div class="visible-sm visible-xs">
           <h1 class="title-sm">
-            {{$groupCategory->name}}
+            {{$title}}
           </h1>
         </div>
 
@@ -187,7 +187,7 @@
                 <div class="row">
                   <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                     <h1>
-                      {{$groupCategory->name}}
+                      {{$title}}
                     </h1>
                   </div>
                   <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">

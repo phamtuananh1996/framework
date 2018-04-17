@@ -41,7 +41,6 @@
                     <div class="search-bar-top">
                         <div class="search-input-top">
                             <form action="/search">
-                                <input type="hidden" name="type" value="product" />
                                 <input type="text" name="q" placeholder="Tìm kiếm sản phẩm ..." />
                                 <button type="submit" class="icon-search">
                                     <svg class="icon-search_white">

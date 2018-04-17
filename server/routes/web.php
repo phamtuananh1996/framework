@@ -30,4 +30,5 @@
 
 
 Route::get('/groupcategory/{id}','GroupCategoryController@getProduct');
+Route::get('/search','SearchController@search');
 
