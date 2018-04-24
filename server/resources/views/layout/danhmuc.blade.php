@@ -10,7 +10,7 @@
                                             
                     @foreach($menuc as $item)
                     <li class="item  first">
-												<a href="categories/{{$item['id']}}">
+												<a href="/groupcategory/{{$item['id']}}">
 													<span>{{$item['name']}}</span>
 												</a>
 											</li>

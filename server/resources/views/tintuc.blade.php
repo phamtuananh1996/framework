@@ -26,7 +26,7 @@
 					<div class="wrapper-sticky" style="display: block; height: 403px; width: 25%; margin: auto; position: relative; float: left; left: auto; right: auto; top: auto; bottom: auto; vertical-align: top;">
 						<div class="col-md-3  col-sm-12 col-xs-12 leftsidebar-col" data-sticky_column="" style="width: 293px; top: auto; bottom: auto; right: auto; left: 0px;">
 							<!-- Begin sidebar blog -->
-							@include("layout.danhmuc");
+							@include("layout.danhmuc")
 							<!-- End sidebar blog -->
 						</div>
 					</div>
@@ -49,7 +49,7 @@
 									<div class=" col-md-7 col-sm-12  col-xs-12">
 										<!-- Begin: Nội dung bài viết -->
 										<h2 class="title-article">
-											<a href="/blogs/news/goi-y-su-dung-dong-ho">{{$tintuc->title}}</a>
+											<a href="/baiviet/{{$tintuc->id}}">{{$tintuc->title}}</a>
 										</h2>
 										<div class="body-content">
 											<ul class="info-more">

@@ -20,6 +20,10 @@ import CreateNews from '@/views/news/create/index'
 import EditNews from '@/views/news/edit/index'
 import ListNews from '@/views/news/list/index'
 
+import Order from '@/views/order'
+import Listorder from '@/views/order/list'
+import Detailorder from '@/views/order/detail'
+
 Vue.use(Router)
 
 export default new Router({
@@ -99,6 +103,24 @@ export default new Router({
               path: 'edit/:id',
               name: 'Edit News',
               component: EditNews
+            }
+          ]
+        },
+        {
+          path: 'order',
+          name: 'order',
+          redirect: 'order/list',
+          component: Order,
+          children: [
+            {
+              path: 'list',
+              name: 'List order',
+              component: Listorder
+            },
+            {
+              path: 'detail/:id',
+              name: 'Detail order',
+              component: Detailorder
             }
           ]
         },

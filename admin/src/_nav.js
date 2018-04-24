@@ -57,6 +57,18 @@ export default {
       ]
     },
     {
+      name: 'Quản lý đơn hàng',
+      url: '/order',
+      icon: 'fa fa-shopping-cart',
+      children: [
+        {
+          name: 'Danh sách',
+          url: '/order/list',
+          icon: 'icon-list'
+        }
+      ]
+    },
+    {
       name: 'Quản lý danh mục',
       url: '/category',
       icon: 'fa fa-align-justify'

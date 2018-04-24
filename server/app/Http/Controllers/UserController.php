@@ -43,6 +43,7 @@ class UserController extends Controller
         $user->phone=$request->phone;
         $user->address=$request->address;
         $user->save();
+        $user->assignRole('MEMBER');
         return redirect("login")->with(['err'=>"error"]);
     }
 }

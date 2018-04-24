@@ -16,7 +16,7 @@
  Route::get('/dichvu','SPController@DichVu');
 
  Route::get('/categories','SPController@getAllSp');
- Route::get('/categories/{id}','SPController@getSp');
+ Route::get('/category/{id}','SPController@GetSpOfCategory');
  Route::get('/gioithieu','SPController@GioiThieu');
  Route::get('/logout','UserController@Logout');
  Route::get('/register','UserController@ViewRegister');
@@ -34,8 +34,12 @@
  Route::get('/cart','CartController@getCart');
  Route::post('/cart','CartController@update');
  Route::get('/checkout','CheckoutController@index');
-
+ Route::post('/checkout','CheckoutController@store');
+ Route::get('/checkout/{id}','CheckoutController@success');
 
 Route::get('/groupcategory/{id}','GroupCategoryController@getProduct');
 Route::get('/search','SearchController@search');
 
+//ajax
+Route::get('/getdistrict','ProvinceController@getDistrict');
+Route::get('/getward','DistrictController@getWard');

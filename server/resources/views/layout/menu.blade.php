@@ -72,7 +72,7 @@
 
                         
                             <li>
-                                <a href="#" title="{{$item1['name']}}">{{$item1['name']}}</a>
+                                <a href="/category/{{$item1['id']}}" title="{{$item1['name']}}">{{$item1['name']}}</a>
                             </li>
                             
                         

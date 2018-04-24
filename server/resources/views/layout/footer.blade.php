@@ -36,13 +36,13 @@
                                     <a href="/">Trang chủ</a>
                                 </li>
 
-                                  @foreach($menuc as $item)
-                    <li class="item  first">
-												<a href="categoris/{{$item['id']}}">
-													<span>{{$item['name']}}</span>
-												</a>
-											</li>
-                    @endforeach
+                                @foreach($menuc as $item)
+                                <li class="item  first">
+                                    <a href="groupcategory/{{$item['id']}}">
+                                        <span>{{$item['name']}}</span>
+                                    </a>
+                                </li>
+                                @endforeach
 
                                 <li>
                                     <a href="/dichvu">Dịch vụ</a>

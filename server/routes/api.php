@@ -21,4 +21,7 @@ Route::resource('groupcategories', 'Admin\GroupCategories\GroupCategoryControlle
 Route::resource('categories', 'Admin\Categories\CategoryController');
 Route::resource('news', 'Admin\News\NewsController');
 Route::resource('slides', 'Admin\Slides\SlideController');
+Route::resource('orders', 'Admin\Orders\OrderController');
+Route::resource('orders.details', 'Admin\Orders\OrderDetailController');
+Route::get('reports', 'Admin\Reports\ReportController@report');
 

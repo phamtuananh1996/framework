@@ -19,7 +19,7 @@
         <!--Product loop-->
         <div class="row content-product-list products-resize">
 
-            @foreach ($group->products->take(8) as $product)
+            @foreach ($group->products->sortByDesc('id')->take(8) as $product)
             <div class="col-md-3 col-sm-6 col-xs-6 pro-loop">
                 <div class="product-block product-resize fixheight" style="height: 345px;">
                     <div class="product-img image-resize view view-third" style="height: 261px;">

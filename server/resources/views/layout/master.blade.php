@@ -31,32 +31,41 @@
         media='all' />
     <link href='/theme.hstatic.net/1000177652/1000229231/14/styles.css?v=90' rel='stylesheet' type='text/css' media='all' />
     <script src='//theme.hstatic.net/1000177652/1000229231/14/jquery.elevatezoom.min.js?v=101' type='text/javascript'></script>
-</head>
 
-<body>
-    <div id="page">
-        <section id="page_content" class="">
-            <div id="pageContainer" class="clearfix">
-                @include('layout.header')
-                 @include('layout.menu')
-                 
-                 @if ($_SERVER['REQUEST_URI']=='/')
-                 @include('layout.slide')
-                 @endif
-            </div>
-            <section id="content" class="clearfix container">
-                <div class="row">
-                    <div class="col-md-12 col-sm-12 col-xs-12">
 
-                        @yield('content')
 
-                    </div>
+    <body>
+        <div id="fb-root"></div>
+        <script>(function (d, s, id) {
+                var js, fjs = d.getElementsByTagName(s)[0];
+                if (d.getElementById(id)) return;
+                js = d.createElement(s); js.id = id;
+                js.src = 'https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v2.12&appId=1051167834904989&autoLogAppEvents=1';
+                fjs.parentNode.insertBefore(js, fjs);
+            }(document, 'script', 'facebook-jssdk'));
+        </script>
+        <div id="page">
+            <section id="page_content" class="">
+                <div id="pageContainer" class="clearfix">
+                    @include('layout.header')
+                    @include('layout.menu')
+                    @if ($_SERVER['REQUEST_URI']=='/') 
+                        @include('layout.slide')
+                    @endif
                 </div>
-            </section>
+                <section id="content" class="clearfix container">
+                    <div class="row">
+                        <div class="col-md-12 col-sm-12 col-xs-12">
 
-            @include('layout.footer')
-        </section>
-    </div>
-</body>
+                            @yield('content')
+
+                        </div>
+                    </div>
+                </section>
+
+                @include('layout.footer')
+            </section>
+        </div>
+    </body>
 
 </html>

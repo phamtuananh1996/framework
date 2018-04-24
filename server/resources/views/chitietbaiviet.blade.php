@@ -25,20 +25,8 @@
 					<div class="article-body">
 						<div class="wrapper-sticky" style="display: block; height: 268px; width: 25%; margin: auto; position: relative; float: left; left: auto; right: auto; top: auto; bottom: auto; vertical-align: top;">
 							<div class="col-md-3 col-sm-12 col-xs-12   leftsidebar-col" data-sticky_column="" style="width: 293px; top: auto; bottom: auto; right: auto; left: 0px;">
-							@include("layout.danhmuc");
-									<!-- End: Danh mục tin tức -->
-
-
-
-
-
-
-
-
-
-
+							@include("layout.danhmuc")
 								</div>
-								<!-- End sidebar -->
 							</div>
 						</div>
 						<div class="col-md-9 col-sm-12 col-xs-12   articles " id="layout-page" data-sticky_column="">
@@ -65,7 +53,6 @@
 											{!!$bv->content!!}
 										</div>
 									</div>
-
 								</div>
 
 							</div>

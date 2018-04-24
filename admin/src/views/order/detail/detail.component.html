@@ -1,0 +1,51 @@
+<div class="animated fadeIn">
+  <div class="col-sm-12 col-md-12">
+    <div class="card">
+      <div class="card-header">
+        <div>Chi tiết đơn hàng</div>
+      </div>
+      <div class="card-body">
+        <p> <b> Tên khách hàng </b>: {{order.name}}</p>
+        <p> <b>Số điện thoại </b>: {{order.phone}}</p>
+        <p> <b>Email </b>: {{order.email}}</p>
+        <p> <b>Địa chỉ giao hàng </b>: {{order.address}}</p>
+        <p> <b>Tổng giá trị đơn hàng </b>: {{order.total}} VND</p>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-header">
+        <div>Chi tiết giỏ hàng</div>
+      </div>
+      <div class="card-body">
+       
+       <div class="table-responsive">
+         <table class="table table-hover">
+           <thead>
+             <tr>
+               <th>STT</th>
+               <th>Tên</th>
+               <th>Ảnh</th>
+               <th>Đơn giá</th>
+               <th>Số lượng</th>
+             </tr>
+           </thead>
+           <tbody>
+             <tr v-for="(cart,index) in order.details">
+               <td>{{index+1}}</td>
+               <td>{{cart.product.name}}</td>
+               <td> <img :src="cart.product.full_image" class="img-responsive" alt="Image" width="50px"></td>
+               <td>{{cart.price}}</td>
+               <td>{{cart.total}}</td>
+             </tr>
+           </tbody>
+         </table>
+       </div>
+      </div>
+      <div class="card-footer" v-if="order.status==0">
+        <div class="pull-right">
+          <button type="button" class="btn btn-primary btn-sm" @click="edit">Giao hàng</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

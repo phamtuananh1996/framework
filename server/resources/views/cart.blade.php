@@ -6,6 +6,7 @@
       <!-- Begin empty cart -->
 
       <div class="row">
+          @if (count(Cart::content())!=0)
         <div id="layout-page" class="col-md-12 col-sm-12 col-xs-12">
           <span class="header-page clearfix">
             <h1>Giỏ hàng</h1>
@@ -63,28 +64,32 @@
 
               </tbody>
             </table>
-            <div class="row">
-              <div class="col-md-6 col-sm-6 col-xs-12 inner-left inner-right">
-                <div class="checkout-buttons clearfix">
-                  <label for="note">Ghi chú </label>
-                  <textarea id="note" name="note" rows="8" cols="50"></textarea>
-                </div>
+            <div class="col-md-6 col-sm-6 col-xs-12 cart-buttons inner-right inner-left">
+              <div class="buttons clearfix">
+                <button type="submit" id="checkout" class="button-default" name="checkout" value="">Thanh toán</button>
+                <button type="submit" id="update-cart" class="button-default" name="update" value="">Cập nhật</button>
               </div>
-              <div class="col-md-6 col-sm-6 col-xs-12 cart-buttons inner-right inner-left">
-                <div class="buttons clearfix">
-                  <button type="submit" id="checkout" class="button-default" name="checkout" value="">Thanh toán</button>
-                  <button type="submit" id="update-cart" class="button-default" name="update" value="">Cập nhật</button>
-                </div>
-              </div>
-              <div class="col-md-12 col-sm-12  col-xs-12 continue-shop">
+            </div>
+            <div class="col-md-12 col-sm-12  col-xs-12 continue-shop">
 
-                <a href="/collections/all">
-                  <i class="fa fa-reply"></i> Tiếp tục mua hàng</a>
-              </div>
-
+              <a href="/collections/all">
+                <i class="fa fa-reply"></i> Tiếp tục mua hàng</a>
             </div>
           </form>
         </div>
+        @endif
+        
+        @if (count(Cart::content())==0)
+          <div id="layout-page" class="col-md-12 col-sm-12 col-xs-12">
+          <span class="header-page clearfix">
+            <h1>Giỏ hàng</h1></span>
+          <p class="text-center">
+            Không có sản phẩm nào trong giỏ hàng!</p>
+          <p class="text-center"><a href="/">
+            <i class="fa fa-reply"></i> Tiếp tục mua hàng</a>
+          </p>
+        </div>
+        @endif
       </div>
 
 

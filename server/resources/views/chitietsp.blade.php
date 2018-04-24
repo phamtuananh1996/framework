@@ -163,6 +163,10 @@
 
 								<!-- End tags -->
 							</div>
+							<div class="fb-like" href="{{url()->full()}}"></div>
+							<div class="fb-share-button">
+								<a target="_blank" href="{{url()->full()}}" class="fb-xfbml-parse-ignore">Chia sẻ</a>
+							</div>
 						</div>
 						<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="margin-top:20px;">
 
@@ -175,7 +179,13 @@
 								{!!$product->info!!}
 
 							</div>
-
+							<div id="binhluan">
+								<div class="title-bl">
+									<h2>Bình luận</h2>
+								</div>
+								<div class="fb-comments" data-href="{{url()->full()}}" data-width="800px" data-numposts="5"></div>
+							</div>
+							
 						</div>
 					</div>
 				</div>
